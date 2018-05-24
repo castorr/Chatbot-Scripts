@@ -1,0 +1,62 @@
+﻿{
+    "output_file": "settings.json",
+    "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where messages will trigger a sound",
+    "group": ""
+    },
+    "Cooldown": {
+    "type": "slider",
+    "label": "Cooldown (min)",
+    "value": 5,
+    "min": 0,
+    "max": 60,
+    "ticks": 1,
+    "tooltip": "Time since last message must be higher than this value for the sound to be played. \r\nTime in minutes.",
+    "group": ""
+    },
+    "Sound": {
+    "type": "dropdown",
+    "value": "Discord",
+    "items": ["Discord", "Facebook", "Gmail", "GTA V Online", "Hangouts", "Iphone", "Onii-Chan","Playstation", "Skype", "Snapchat", "Steam", "Twitter", "WhatsApp", "Xbox"],
+    "label": "Sound",
+    "tooltip": "Sound that gets played",
+    "group": ""
+    },
+    "Caster": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Ignore caster messages",
+    "tooltip": "If enabled any messages from the caster will NOT trigger a sound!",
+    "group": ""
+    },
+    "Volume": {
+    "type": "slider",
+    "label": "Volume",
+    "value": 50,
+    "min": 1,
+    "max": 100,
+    "ticks": 1,
+    "tooltip": "Volume used for all sounds",
+    "group": ""
+    },
+    "TestSound": {
+    "type": "button",
+    "label": "Test Sound",
+    "tooltip": "Test sound & volume!\r\nMust save settings first!",
+    "function": "TestSound",
+    "wsevent": "",
+    "group": ""
+    }, 
+    "SetDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Restores all script settings to the default ones!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+    } 
+  }
