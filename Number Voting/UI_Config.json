@@ -1,0 +1,113 @@
+﻿{
+  "output_file": "settings.json",
+  "Start": {
+		"type": "button",
+		"label": "Open poll",
+		"tooltip": "Opens the poll to start accepting votes!",
+		"function": "Start",
+		"wsevent": "",
+		"group": ""
+  },
+  "Stop": {
+		"type": "button",
+		"label": "Close poll",
+		"tooltip": "Closes the poll to stop accepting votes!",
+		"function": "Stop",
+		"wsevent": "",
+		"group": ""
+  },
+  "Clear": {
+		"type": "button",
+		"label": "Reset poll",
+		"tooltip": "Resets the poll and remove all votes",
+		"function": "Clear",
+		"wsevent": "",
+		"group": ""
+  },
+  "Winner": {
+		"type": "button",
+		"label": "Show Result",
+		"tooltip": "Show the result of the poll",
+		"function": "Winner",
+		"wsevent": "",
+		"group": ""
+  },
+  "Min": {
+    "type": "numberbox",
+    "value": 1,
+    "label": "Lowest vote option",
+    "tooltip": "Lowest value users can vote on",
+    "group": "General"
+  },
+  "Max": {
+    "type": "numberbox",
+    "value": 100,
+    "label": "Highest vote option",
+    "tooltip": "Highest value users can vote on",
+    "group": "General"
+  },
+  "AllowMulti": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Allow multi voting",
+    "tooltip": "If checked users can spam to vote multiple times on the same (or a different) option!",
+    "group": "General"
+  },
+  "SendMessages": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Send stream messages",
+    "tooltip": "If checked the poll will send messages to chat when opened/closed/reset/winner is picked!",
+    "group": "General"
+  },
+  "CloseOnReset": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Close poll on reset",
+    "tooltip": "If checked the poll will automatically close the poll when you reset it",
+    "group": "General"
+  },
+  "Opened": {
+    "type": "textbox",
+    "value": "ItsBoshyTime  The poll is now OPEN! Go ahead and vote by typing the number in chat ItsBoshyTime ",
+    "label": "Poll opened",
+    "tooltip": "Message sent when poll is opened",
+    "group": "Responses"
+  },
+  "Closed": {
+    "type": "textbox",
+    "value": "ItsBoshyTime  The poll is now CLOSED! ItsBoshyTime ",
+    "label": "Poll Closed",
+    "tooltip": "Message sent when poll is opened",
+    "group": "Responses"
+  },
+  "Reset": {
+    "type": "textbox",
+    "value": "ItsBoshyTime The poll has been cleared! ItsBoshyTime",
+    "label": "Poll Cleared",
+    "tooltip": "Message sent when poll is cleared",
+    "group": "Responses"
+  },
+  "Result": {
+    "type": "textbox",
+    "value": "And the winner is: {0} with {1} votes!",
+    "label": "Result",
+    "tooltip": "Message sent when the result is checked\r\n{0} = winning options\r\n{1} = votes on the winning options",
+    "group": "Responses"
+  },
+  "NoVotes": {
+    "type": "textbox",
+    "value": "No votes were registered",
+    "label": "No votes",
+    "tooltip": "Message sent when there was no votes registered",
+    "group": "Responses"
+  },
+  "BtnDefaults": {
+		"type": "button",
+		"label": "Restore Default Settings",
+		"tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+		"function": "SetDefaults",
+		"wsevent": "",
+		"group": "General"
+  }
+}

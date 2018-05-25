@@ -1,0 +1,274 @@
+﻿{
+  "output_file": "settings.json",
+  "service": {
+    "type": "dropdown",
+    "value": "Twitch",
+    "items": ["Twitch","Mixer","Youtube"],
+    "label": "Sreaming Service",
+    "tooltip": "Service you are streaming on. Used for certain parameters that's platform based like $followage!",
+    "group": "General"
+  },
+  "deepbot": {
+    "type": "checkbox",
+    "value": false,
+	  "label": "DeepBot parameters",
+    "tooltip": "enable or disable Streamelements parameters",
+	  "group": "General"
+  },
+  "nightbot": {
+    "type": "checkbox",
+    "value": false,
+	  "label": "Nightbot parameters",
+    "tooltip": "enable or disable Nightbot parameters",
+	  "group": "General"
+  },
+  "phantombot": {
+    "type": "checkbox",
+    "value": false,
+	  "label": "Phantombot parameters",
+    "tooltip": "enable or disable Streamelements parameters",
+	  "group": "General"
+  },
+  "streamelements": {
+    "type": "checkbox",
+    "value": false,
+	  "label": "StreamElements parameters",
+    "tooltip": "enable or disable Streamelements parameters",
+	  "group": "General"
+  },
+  "wizebot": {
+    "type": "checkbox",
+    "value": false,
+	  "label": "WizeBot parameters",
+    "tooltip": "enable or disable Streamelements parameters",
+	  "group": "General"
+  },
+  "imperial": {
+    "type": "checkbox",
+    "value": true,
+	"label": "Use imperial instead of metric",
+    "tooltip": "if checked weather will show in F instead of C",
+	"group": "General"
+  },
+  "srenabled": {
+    "type": "checkbox",
+    "value": true,
+	"label": "!sr and !songrequest response",
+    "tooltip": "enable or disable message sent when someone does !sr or !songrequest without any arguments",
+	"group": "General"
+  },
+    "srmessage": {
+    "type": "textbox",
+    "value": "{0} in order to request a song you need to add a song/video ID, url or a search term",
+	"label": "!sr and !songrequest response",
+    "tooltip": "Message sent when someone does !sr or !songrequest without any arguments",
+	"group": "General"
+  },
+  "excluded": {
+    "type": "textbox",
+    "value": "",
+    "label": "Excluded from $cranduser",
+    "tooltip": "Users to exclude from $cranduser, seperated by comma",
+    "group": "General"
+  },
+    "ytuser": {
+    "type": "textbox",
+    "value": "",
+    "label": "YouTube ID",
+    "tooltip": "Channel ID used for the YouTube related parameters \r\n Press the button below to locate your YouTube Channel ID!",
+    "group": "General"
+  },
+  "locateytid": {
+    "type": "button",
+    "label": "Locate YouTube ID",
+    "tooltip": "Opens website to locate you YouTube ID",
+    "function": "LocateYTID",
+    "wsevent": "",
+    "group": "General"
+  },
+  "openreadme": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "group": "Script Shortcuts"
+  }, 
+  "controlc": {
+    "type": "button",
+    "label": "Copy index.html filepath",
+    "tooltip": "Copy the filepath for index.html directly to clipboard for easy insertion in your streaming software",
+    "function": "ControlC",
+    "wsevent": "",
+    "group": "Script Shortcuts"
+  },
+  "openfilesfolder": {
+    "type": "button",
+    "label": "Open Files Folder",
+    "tooltip": "Opens the built in files folder containing all generated textfiles",
+    "function": "OpenFilesFolder",
+    "wsevent": "",
+    "group": "Script Shortcuts"
+  },
+  "opensoundsfolder": {
+    "type": "button",
+    "label": "Open Sound Directory",
+    "tooltip": "Opens the specific folder for this script",
+    "function": "OpenSoundsFolder",
+    "wsevent": "",
+    "group": "Script Shortcuts"
+  },
+  "ideas": {
+    "type": "button",
+    "label": "Feature Suggestions",
+    "tooltip": "Opens https://ideas.streamlabs.com/ in the default browser",
+    "function": "Ideas",
+    "wsevent": "",
+    "group": "Streamlabs Links"
+  },
+  "sl": {
+    "type": "button",
+    "label": "Streamlabs",
+    "tooltip": "Opens https://www.streamlabs.com/ in the default browser",
+    "function": "SL",
+    "wsevent": "",
+    "group": "Streamlabs Links"
+  },
+  "time": {
+    "type": "textbox",
+    "value": "%H:%M:%S",
+	  "label": "Time Format",
+    "tooltip": "The format used for $ctime",
+	  "group": "Time & Date"
+  },
+  "date": {
+    "type": "textbox",
+    "value": "%d/%m-%Y",
+	  "label": "Date Format",
+    "tooltip": "The format used for $cdate",
+	  "group": "Time & Date"
+  },
+  "helpmessage": {
+    "type": "button",
+    "label": "Date & Time Help",
+    "tooltip": "Shows all available arguments for the time format",
+    "function": "timeHelp",
+    "wsevent": "",
+    "group": "Time & Date"
+  },
+  "bits": {
+    "type": "button",
+    "label": "Bits Acceptable Use",
+    "tooltip": "Opens https://www.twitch.tv/p/legal/bits-acceptable-use/ in the default browser",
+    "function": "Bits",
+    "wsevent": "",
+    "group": "Twitch Links"
+  },
+  "blog": {
+    "type": "button",
+    "label": "Blog",
+    "tooltip": "Opens https://blog.twitch.tv/ in the default browser",
+    "function": "Blog",
+    "wsevent": "",
+    "group": "Twitch Links"
+  },
+  "tguidelines": {
+    "type": "button",
+    "label": "Community Guidelines",
+    "tooltip": "Opens https://www.twitch.tv/p/legal/community-guidelines/ in the default browser",
+    "function": "TGuidelines",
+    "wsevent": "",
+    "group": "Twitch Links"
+  },
+  "helpcenter": {
+    "type": "button",
+    "label": "Help Center",
+    "tooltip": "Opens https://help.twitch.tv/ in the default browser",
+    "function": "HelpCenter",
+    "wsevent": "",
+    "group": "Twitch Links"
+  },
+  "irlfaq": {
+    "type": "button",
+    "label": "IRL FAQ",
+    "tooltip": "Opens https://help.twitch.tv/customer/portal/articles/2672652-irl-faq in the default browser",
+    "function": "IRLFAQ",
+    "wsevent": "",
+    "group": "Twitch Links"
+  },
+  "twitteruser": {
+    "type": "textbox",
+    "value": "",
+    "label": "Twitter username",
+    "tooltip": "insert your twitter username to make sure all twitter related api's works as intended!",
+    "group": "Twitter"
+  },
+  "norts": {
+    "type": "checkbox",
+    "value": true,
+	"label": "No Retweets",
+    "tooltip": "if checked the $latesttweet will ignore retweets",
+	"group": "Twitter"
+  },
+    "tweeturl": {
+    "type": "checkbox",
+    "value": true,
+	"label": "Include URL to tweet",
+    "tooltip": "If checked the response will include url to the latest tweet",
+	"group": "Twitter"
+  },
+    "tweetshort": {
+    "type": "checkbox",
+    "value": true,
+	"label": "Shorten tweet url",
+    "tooltip": "If checked the url in the response will be shortened using tinyurl",
+	"group": "Twitter"
+  },
+    "tweethowlong": {
+    "type": "checkbox",
+    "value": true,
+	"label": "Time since tweet posted",
+    "tooltip": "if checked the response will include time since te tweet was posted",
+	"group": "Twitter"
+  },
+    "ctt": {
+    "type": "textbox",
+    "value": "Come join me over at twitch.tv/$mychannel",
+	"label": "Current Click to tweet Message",
+    "tooltip": "Current message used for the $ctt link!",
+	"group": "Twitter"
+  },
+    "cttfailed": {
+    "type": "textbox",
+    "value": "Failed to update click to tweet link!",
+	"label": "$setctt failed response",
+    "tooltip": "Message used for when the $setctt fails to update click to tweet link",
+	"group": "Twitter"
+  },
+  "twitter": {
+    "type": "button",
+    "label": "Open Twitter Page",
+    "tooltip": "Opens the Twitterpage for the user set above",
+    "function": "Twitter",
+    "wsevent": "",
+    "group": "Twitter"
+  },
+  "volume": {
+    "type": "slider",
+	"label": "Volume",
+    "value": 50,
+  	"min": 1,
+  	"max": 100,
+  	"ticks": 1,
+    "tooltip": "Volume used for all sounds",
+  	"group": ""
+  },
+  "setdefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Restores all script settings to the default ones!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  }
+}

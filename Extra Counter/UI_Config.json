@@ -1,0 +1,177 @@
+﻿{
+  "output_file": "settings.json",
+  "dCount": {
+    "type": "numberbox",
+  	"label": "Current Count",
+    "value": 0,
+    "tooltip": "Current count, script reload required to update ",
+  	"group": "Current Count"
+  },
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!rip",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+  "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+    "ModPerm": {
+    "type": "dropdown",
+    "value": "Moderator",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Edit permission",
+    "tooltip": "Set the permission to increase, decrease and reset the counter.",
+    "group": "General"
+  },
+    "ModPermInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Edit permission info info",
+    "tooltip": "Set the user, rank or tier for the permission to increase, decrease and reset the counter.",
+    "group": "General"
+  },
+  "TextFormat": {
+    "type": "textbox",
+    "value": "{0}",
+    "label": "Textfile format",
+    "tooltip": "Format used for the count.txt textfile\r\n{0} = Current value",
+    "group": "General"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+   "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+   	"group": "Cooldown"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "If enabled the caster ignore cooldowns!",
+  	"group": "Cooldown"
+  },
+    "BaseResponse": {
+    "type": "textbox",
+    "value": "Deaths: {1}",
+    "label": "Base response",
+    "tooltip": "Response when checking the count \r\n{0} = user \r\n{1} = new count value",
+    "group": "Responses"
+  },
+    "Increased": {
+    "type": "textbox",
+    "value": "[Increased] {1}",
+    "label": "Increased response",
+    "tooltip": "Response when count is increased\r\n{0} = user \r\n{1} = new count value",
+    "group": "Responses"
+  },
+    "Decreased": {
+    "type": "textbox",
+    "value": "[Decreased] {1}",
+    "label": "Decreased response",
+    "tooltip": "Response when count is decreased\r\n{0} = user \r\n{1} = new count value",
+    "group": "Responses"
+  },
+    "Set": {
+    "type": "textbox",
+    "value": "[Set] New count: {1}",
+    "label": "Set count response",
+    "tooltip": "Response when count is set to a new value \r\n{0} = user \r\n{1} = new count value",
+    "group": "Responses"
+  },
+    "Reset": {
+    "type": "textbox",
+    "value": "[Reset] New count: 0",
+    "label": "Base response",
+    "tooltip": "Response when count is reset",
+    "group": "Responses"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "$user -> only $permission ($permissioninfo) and higher can use this command",
+    "label": "Permission denied response",
+    "tooltip": "Message sent when user doesn't select any valid wire. \r\n{0} = user \r\n{1} = permission\r\n{2} = permission info",
+    "group": "Responses"
+  },
+  "openFolder": {
+    "type": "button",
+    "label": "Locate Count.txt",
+    "tooltip": "Opens the folder containing count.txt",
+    "function": "OpenFolder",
+    "wsevent": "",
+    "group": ""
+  },
+  "openReadMe": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "group": ""
+  }, 
+  "BtnDefaults": {
+		"type": "button",
+		"label": "Restore Default Settings",
+		"tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+		"function": "SetDefaults",
+		"wsevent": "",
+		"group": ""
+  }
+}

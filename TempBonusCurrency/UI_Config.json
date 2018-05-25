@@ -1,0 +1,153 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+	"group": "General"
+  },
+  "Command": {
+    "type": "textbox",
+    "value": "!bonus",
+	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+	"group": "General"
+  },
+  "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+    "Cost": {
+    "type": "numberbox",
+    "value": 300,
+    "label": "Cost",
+    "tooltip": "Base cost on using the command",
+    "group": "General"
+  },
+    "Payout": {
+    "type": "numberbox",
+    "value": 15,
+    "label": "Payoutamount",
+    "tooltip": "How many points will be handed out each payout",
+    "group": "General"
+  },
+    "PayoutDuration": {
+    "type": "numberbox",
+    "value": 300,
+    "label": "Payoutduration in seconds",
+    "tooltip": "How long the bonus payout will be active",
+    "group": "General"
+  },
+    "PayoutInterval": {
+    "type": "numberbox",
+    "value": 30,
+    "label": "Payoutinterval in seconds",
+    "tooltip": "How often the bonus payout will occur",
+    "group": "General"
+  },
+   "UseCD": {
+    "type": "checkbox",
+    "value": true,
+	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+	"group": "Cooldown"
+  },
+  "Cooldown": {
+    "type": "numberbox",
+	"label": "Cooldown (seconds)",
+    "value": 305,
+    "tooltip": "Cooldown in seconds. OBS: the cooldown should be longer than the payout duration !",
+	"group": "Cooldown"
+  },
+   "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+	"group": "Cooldown"
+  },
+  "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+	"group": "Cooldown"
+  },
+    "BaseResponse": {
+    "type": "textbox",
+    "value": "{0} paid {1} to give everyone in chat {2} bonus {3} every {4} seconds for the next {5} seconds ",
+    "label": "Success message",
+    "tooltip": "Response when command is succssfully triggered  \r\n {0} = user \r\n {1} = commandcost \r\n {2} = payout amount each interval \r\n {3} = currencyname \r\n {4} = payoutinterval in seconds \r\n {5} = Duration of the payouts",
+    "group": "Responses"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "If enabled the caster ignore cooldowns!",
+  	"group": "Cooldown"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have enough {1}! ",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user don't have enough currency \r\n {0} = user \r\n {1} = Currency name \r\n {2} = command name",
+    "group": "Responses"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "{0} -> only {1} ({2}) and higher can use this command",
+    "label": "No permission response",
+    "tooltip": " Message sent when user don't have high enough permission \r\n {0} = user \r\n {1} = Permission \r\n {2} = Permission Info",
+    "group": "Responses"
+  },
+   "EnablePayoutResponse": {
+    "type": "checkbox",
+    "value": false,
+	"label": "Payout message",
+    "tooltip": "Enable/Disable payout messages",
+	"group": "Responses"
+  },
+    "PayoutResponse": {
+    "type": "textbox",
+    "value": "Woop woop, another payout! ",
+    "label": "Payout message",
+    "tooltip": "Message sent after every payout for the duration",
+    "group": "Responses"
+  },
+  "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  }
+}
