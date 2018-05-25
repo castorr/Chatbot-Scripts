@@ -1,0 +1,187 @@
+﻿{
+  "output_file": "settings.json", 
+  "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Only when stream is live",
+    "tooltip": "If enabled the command will only work while stream is live",
+    "group": "General"
+  },
+  "Command": {
+    "type": "textbox",
+    "value": "!russian",
+	  "label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+	  "group": "General"
+  },
+  "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+  "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+  "Cost": {
+    "type": "numberbox",
+    "value": 0,
+    "label": "Cost",
+    "tooltip": "Base cost on using the command",
+    "group": "General"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+	  "label": "Caster ignores cooldown",
+    "tooltip": "Enable/Disable cooldown for broadcaster",
+	  "group": "Cooldown"
+  },
+  "UseCD": {
+    "type": "checkbox",
+    "value": false,
+	  "label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+	  "group": "Cooldown"
+  },
+  "Cooldown": {
+    "type": "numberbox",
+	  "label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+	  "group": "Cooldown"
+  },
+  "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+	  "label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+	  "group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+	  "label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+	  "group": "Cooldown"
+  },
+  "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+	  "label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+	  "group": "Cooldown"
+  },
+  "Died": {
+    "type": "textbox",
+    "value": "{0} pulls the trigger and .... BOOMB {0} died!",
+    "label": "Death response",
+    "tooltip": "Message sent when user get shot \r\n {0} = user \r\n {1} = command cost \r\n {2} = currency name \r\n {3} = value currency lost  \r\n {4} = timeout length ",
+    "group": "Responses"
+  },
+  "Survived": {
+    "type": "textbox",
+    "value": "{0} pulls the trigger and .... BOOMB! nothing happens and {0} lives!",
+    "label": "Survive response",
+    "tooltip": "Message sent when user survives \r\n {0} = user \r\n {1} = command cost \r\n {2} = currency name \r\n {3} = value currency gained",
+    "group": "Responses"
+  },
+  "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have enough {1}! {2} costs {3} {1} ",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user doesn't have enough points! \r\n {0} = user \r\n {1} = Currency name \r\n {2} = command name \r\n {3} = command cost",
+    "group": "Responses"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "$user -> only $permission ($permissioninfo) and higher can use this command",
+    "label": "Permission denied response",
+    "tooltip": "Message sent when user doesn't select any valid wire. \r\n{0} = user \r\n{1} = permission\r\n{2} = permission info",
+    "group": "Responses"
+  },
+  "Chambers": {
+    "type": "numberbox",
+    "value": 6,
+    "label": "Number of chambers",
+    "tooltip": "Amount of chambers",
+    "group": "Misc"
+  },
+  "Bullets": {
+    "type": "numberbox",
+    "value": 3,
+    "label": "Chambers loaded",
+    "tooltip": "Amount of chambers that are loaded",
+    "group": "Misc"
+  },
+  "TimeoutEnabled": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Use timeout",
+    "tooltip": "Enable/disable timeout when shot",
+    "group": "Misc"
+  },
+  "TimeoutLength": {
+    "type": "numberbox",
+    "value": 60,
+    "label": "Timeout length",
+    "tooltip": "Timeout length in seconds when shot!",
+    "group": "Misc"
+  },
+  "RCurrencyEnabled": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Lose currency when shot",
+    "tooltip": "Enable/Disable removing currency when shot",
+    "group": "Currency"
+  },
+  "RCurrencyMin": {
+    "type": "numberbox",
+    "value": 10,
+    "label": "Min currency loss",
+    "tooltip": "Minimum value to lose when shot",
+    "group": "Currency"
+  },
+  "RCurrencyMax": {
+    "type": "numberbox",
+    "value": 1000,
+    "label": "Max currency loss",
+    "tooltip": "Maximum value to lose when shot",
+    "group": "Currency"
+  },
+  "ACurrencyEnabled": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Gain currency when surviving",
+    "tooltip": "Enable/Disable currency payout on surviving",
+    "group": "Currency"
+  },
+  "ACurrencyMin": {
+    "type": "numberbox",
+    "value": 10,
+    "label": "Min currency gain",
+    "tooltip": "Minimum value to win when surviving",
+    "group": "Currency"
+  },
+  "ACurrencyMax": {
+    "type": "numberbox",
+    "value": 1000,
+    "label": "Max currency gain",
+    "tooltip": "Maximum value to win when surviving",
+    "group": "Currency"
+  },
+  "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+	}
+}

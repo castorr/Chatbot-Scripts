@@ -1,0 +1,202 @@
+﻿{
+  "output_file": "settings.json",
+  "GoingLive": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Toggle settings when going live",
+    "tooltip": "",
+    "group": "General"
+  }, 
+    "GoingOffline": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Toggle settings when going offline",
+    "tooltip": "",
+    "group": "General"
+  },
+    "sendMessage": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Send Twitch message",
+    "tooltip": "If enabled the script will send a Twitch message when stream goes live",
+    "group": "Going Online"
+  },
+  "DsendMessage": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Send Discord message",
+    "tooltip": "If enabled the script will send a Discord message when stream goes live",
+    "group": "Going Online"
+  },
+    "emoteonly": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Emote only mode",
+    "tooltip": "If enabled the script will set chat to emote only mode",
+    "group": "Going Online"
+  },  
+    "subonly": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Subscriber only mode",
+    "tooltip": "If enabled the script will set chat to subscriber only mode",
+    "group": "Going Online"
+  },
+    "slowmode": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Slowmode",
+    "tooltip": "If enabled the script will set chat to slowmode",
+    "group": "Going Online"
+  },
+    "followers": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Followers only mode",
+    "tooltip": "If enabled the script will set chat to followers only mode",
+    "group": "Going Online"
+  },
+    "r9k": {
+    "type": "checkbox",
+    "value": false,
+    "label": "R9KBeta",
+    "tooltip": "If enabled the script will activate r9kbeta",
+    "group": "Going Online"
+  },
+    "unhost": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Unhost when going live",
+    "tooltip": "If enabled the script will unhost automatically when you go live",
+    "group": "Going Online"
+  },
+  "message": {
+    "type": "textbox",
+    "value": "Stream is now live! If you can't see it hit refresh",
+    "label": "Twitch message",
+    "tooltip": "If enabled the script will send this message to Twitch when stream goes live",
+    "group": "Going Online"
+  },
+  "Dmessage": {
+    "type": "textbox",
+    "value": "@everyone Stream is now live! Come join me over at {0}",
+    "label": "Discord message",
+    "tooltip": "If enabled the script will send this message to Discord when stream goes live \r\n{0} = Stream url",
+    "group": "Going Online"
+  },
+    "slowmodeinfo": {
+    "type": "textbox",
+    "value": " ",
+    "label": "Slowmode time",
+    "tooltip": "How long slowmode it should be in seconds",
+    "group": "Going Online"
+  },  
+    "followersinfo": {
+    "type": "textbox",
+    "value": " ",
+    "label": "Followers only mode",
+    "tooltip": "If enabled the script will set chat to followers only mode \r\n \r\n Here are a few examples, which can be any time up to 3 months:\r\n 30m or  30 minutes\r\n 2h  or  1 hours\r\n 2d  or  2 days\r\n 1w  or  1 week\r\n 3mo or  3 months  ",
+    "group": "Going Online"
+  },
+  "sendMessageOFF": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Send Twitch message",
+    "tooltip": "If enabled the script will send a Twitch message when stream goes live",
+    "group": "Going Offline"
+  },
+  "DsendMessageOFF": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Send Discord message",
+    "tooltip": "If enabled the script will send a Discord message when stream goes live",
+    "group": "Going Offline"
+  },
+    "emoteonlyOFF": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Emote only mode",
+    "tooltip": "If enabled the script will set chat to emote only mode",
+    "group": "Going Offline"
+  },  
+    "subonlyOFF": {
+    "type": "checkbox",
+    "value": true,
+    "label": "Subscriber only mode",
+    "tooltip": "If enabled the script will set chat to subscriber only mode",
+    "group": "Going Offline"
+  },
+    "slowmodeOFF": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Slowmode",
+    "tooltip": "If enabled the script will set chat to slowmode",
+    "group": "Going Offline"
+  },
+    "followersOFF": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Followers only mode",
+    "tooltip": "If enabled the script will set chat to followers only mode",
+    "group": "Going Offline"
+  },
+    "r9kOFF": {
+    "type": "checkbox",
+    "value": false,
+    "label": "R9KBeta",
+    "tooltip": "If enabled the script will activate r9kbeta",
+    "group": "Going Offline"
+  },
+  "messageOFF": {
+    "type": "textbox",
+    "value": "Stream is now offline! BibleThump",
+    "label": "Twitch message",
+    "tooltip": "If enabled the script will send this message to Twitch when stream goes live",
+    "group": "Going Offline"
+  },
+  "DmessageOFF": {
+    "type": "textbox",
+    "value": "Stream just went offline http://offli.ne/dashboard/images/OFFLINE_LOGO_CYAN.png",
+    "label": "Discord message",
+    "tooltip": "If enabled the script will send this message to Discord when stream goes live \r\n{0} = Stream url",
+    "group": "Going Offline"
+  },
+    "slowmodeinfoOFF": {
+    "type": "textbox",
+    "value": " ",
+    "label": "Slowmode time",
+    "tooltip": "How long slowmode it should be in seconds",
+    "group": "Going Offline"
+  },  
+    "followersinfoOFF": {
+    "type": "textbox",
+    "value": " ",
+    "label": "Followers only mode",
+    "tooltip": "If enabled the script will set chat to followers only mode \r\n \r\n Here are a few examples, which can be any time up to 3 months:\r\n 30m or  30 minutes\r\n 2h  or  1 hours\r\n 2d  or  2 days\r\n 1w  or  1 week\r\n 3mo or  3 months  ",
+    "group": "Going Offline"
+  },
+    "TestOff": {
+    "type": "button",
+    "label": "Test Going Live",
+    "tooltip": "Update chat settings according to the saved settings",
+    "function": "TestLive",
+    "wsevent": "",
+    "group": ""
+  },
+    "TestLiveOFF": {
+    "type": "button",
+    "label": "Test Going Offline",
+    "tooltip": "Update chat settings according to the saved settings",
+    "function": "TestOff",
+    "wsevent": "",
+    "group": ""
+  },
+    "openReadMe": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "group": ""
+  }
+}

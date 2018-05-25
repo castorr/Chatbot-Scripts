@@ -1,0 +1,436 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!gamble",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+  "Mode": {
+    "type": "dropdown",
+    "value": "Revlo",
+    "items": ["Revlo","Revlo Advanced","Random","Percentage","Single Number"],
+    "label": "Mode",
+    "tooltip": "Set the mode of the game \r\n \r\n[Revlo] 1-60 Lose, 61-98 Double your bet, 99-100 triple your bet. \r\n \r\n[Revlo Advanced] Customize the values from the Revlo mode.\r\n \r\n[Random] Numbers don't matter at all. Set your win chance, win multiplicator and min, max values for the roll. Throw your viewers off \r\n \r\n[Percentage] Rolls will give a payout in percentage bonus equal to the roll value. 0 roll = lost all currency, 100 = doubled currency \r\n \r\n[Single Number] You decide exactly what numbers are the winning ones. High low or a mix in between",
+    "group": "General"
+  },
+    "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+    "AllWord": {
+    "type": "textbox",
+    "value": "all",
+    "label": "Word to go all in",
+    "tooltip": "Keyword to used after the command to allow the user to bet all their points",
+    "group": "Misc (All Modes)"
+  },
+    "ForceAll": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Force all in",
+    "tooltip": "If this is enabled the user will automatically bet ALL their points",
+  	"group": "Misc (All Modes)"
+  },
+    "UseRandom": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use random bets",
+    "tooltip": "If this is enabled the bet amount will be randomized, the user will not be able to pick their own bet size",
+  	"group": "Misc (All Modes)"
+  },
+    "RandomMin": {
+    "type": "numberbox",
+  	"label": "Min % for random bet",
+    "value": 0,
+    "tooltip": "Min amount in percentage of users total points that will be used to randomize a number",
+  	"group": "Misc (All Modes)"
+  },
+  "RandomMax": {
+    "type": "numberbox",
+  	"label": "Max % for random bet",
+    "value": 100,
+    "tooltip": "Max amount in percentage of users total points that will be used to randomize a number",
+  	"group": "Misc (All Modes)"
+  },
+    "JackpotEnabled": {
+    "type": "checkbox",
+  	"label": "Jackpot mode",
+    "value": false,
+    "tooltip": "If this is enabled all losing gambles will add to the jackpot value",
+  	"group": "Jackpot (All Modes)"
+  },
+    "JackpotNumber": {
+    "type": "numberbox",
+  	"label": "Jackpot number",
+    "value": 100,
+    "tooltip": "Number that if rolled will give the jackpot!",
+  	"group": "Jackpot (All Modes)"
+  },
+    "JackpotPercentage": {
+    "type": "numberbox",
+  	"label": "Jackpot accumulation value (%)",
+    "value": 50,
+    "tooltip": "% of the losing bets that will be added to the jackpot",
+  	"group": "Jackpot (All Modes)"
+  },
+    "JackpotBase": {
+    "type": "numberbox",
+  	"label": "Jackpot base value",
+    "value": 500,
+    "tooltip": "Base value for the jackpot. This value is what the jackpot starts at and will reset to when someone wins the jackpot",
+  	"group": "Jackpot (All Modes)"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown (All Modes)"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown (All Modes)"
+  },
+    "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown (All Modes)"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown (All Modes)"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown (All Modes)"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "Enable/Disable cooldown for caster",
+  	"group": "Cooldown (All Modes)"
+  },
+    "BaseResponse": {
+    "type": "textbox",
+    "value": "Rolled {0}. ",
+    "label": "Base response with roll",
+    "tooltip": " {0} = roll value \r\n {1} = user",
+    "group": "Responses (All Modes)"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have that many {1} to gamble ",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user try to gamble more than they have \r\n {0} = user \r\n {1} = Currency name \r\n {2} = command name",
+    "group": "Responses (All Modes)"
+  },
+    "WinResponse": {
+    "type": "textbox",
+    "value": "{0} won {1} {3} and now has {2} {3} ",
+    "label": "Win response",
+    "tooltip": "Message sent when user wins \r\n {0} = user \r\n {1} = value won \r\n {2} = points after win \r\n {3} = Currency name",
+    "group": "Responses (All Modes)"
+  },
+    "LoseResponse": {
+    "type": "textbox",
+    "value": "{0} lost {1} {3} and now has {2} {3} ",
+    "label": "Lose response",
+    "tooltip": "Message sent when user doesn't have enough points! \r\n {0} = user \r\n {1} = value won \r\n {2} = points after win \r\n {3} = Currency name \r\n {4} = Jackpot value",
+    "group": "Responses (All Modes)"
+  },
+    "TooMuchResponse": {
+    "type": "textbox",
+    "value": "{0} you can't gamble more than {1} {2} ",
+    "label": "Gambling too much",
+    "tooltip": "Message sent when user tries to gamble more than allowed \r\n {0} = user \r\n {1} = max bet amount \r\n {2} = currencyname",
+    "group": "Responses (All Modes)"
+  },
+    "TooLowResponse": {
+    "type": "textbox",
+    "value": "{0} you can't gamble less than {1} {2} ",
+    "label": "Gambling too little",
+    "tooltip": "Message sent when user tries to gamble less than allowed \r\n {0} = user \r\n {1} = min bet amount \r\n {2} = currencyname",
+    "group": "Responses (All Modes)"
+  },
+    "InfoResponse": {
+    "type": "textbox",
+    "value": "To gamble use !gamble <amount> ",
+    "label": "Info response",
+    "tooltip": "Message sent when user doesn't manage to gamble correctly",
+    "group": "Responses (All Modes)"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "$user -> only $permission ($permissioninfo) and higher can use this command",
+    "label": "Permission denied response",
+    "tooltip": "Message sent when user doesn't select any valid wire. \r\n{0} = user \r\n{1} = permission\r\n{2} = permission info",
+    "group": "Responses (All Modes)"
+  },
+    "JackpotWin": {
+    "type": "textbox",
+    "value": "{0} won the jackpot of {1} {3} and now has a total of {2} {3}",
+    "label": "Jackpot win response",
+    "tooltip": "Message sent when user check jackpot size if that option is enabled \r\n {0} = User \r\n {1} = Jackpot won \r\n {2} = points after winning the jackpot \r\n {3} = Currencyname",
+    "group": "Responses (All Modes)"
+  },
+  "NoZero": {
+    "type": "textbox",
+    "value": "{0} -> You are not allowed to roll anything less than 1!",
+    "label": "Negative gamble amount response",
+    "tooltip": "Message sent when user tries to roll a negative number \r\n{0} = User",
+    "group": "Responses (All Modes)"
+  },
+  "NoCurrency": {
+    "type": "textbox",
+    "value": "{0} -> You don't have any currency to gamble!",
+    "label": "No currency response",
+    "tooltip": "Message sent when user doesn't have any currency to gamble \r\n{0} = User",
+    "group": "Responses (All Modes)"
+  },
+    "Jackpot": {
+    "type": "numberbox",
+    "value": 500,
+	"label": "Current Jackpot",
+    "tooltip": "Current jackpot amount, \r\n OBS require reload to update",
+  	"group": "Jackpot (All Modes)"
+  },
+    "JackpotCheck": {
+    "type": "checkbox",
+    "value": true,
+	"label": "Users can check jackpot size",
+    "tooltip": "Enable/Disable the option for users to check the jackpot size ",
+  	"group": "Jackpot (All Modes)"
+  },
+    "JackpotWord": {
+    "type": "textbox",
+    "value": "jackpot",
+    "label": "Word to check jackpot",
+    "tooltip": "The word used after command to check the current jackpot size",
+    "group": "Jackpot (All Modes)"
+  },
+    "JackpotResponse": {
+    "type": "textbox",
+    "value": "There's currently {0} {1} in the jackpot!",
+    "label": "Jackpot response",
+    "tooltip": "Message sent when user check jackpot size if that option is enabled \r\n {0} = Jackpot size \r\n {1} = Currencyname",
+    "group": "Jackpot (All Modes)"
+  },
+    "MinValue": {
+    "type": "numberbox",
+  	"label": "Min roll value",
+    "value": 0,
+    "tooltip": "Lowest roll possible",
+  	"group": "Revlo Advanced"
+  },
+    "MaxValue": {
+    "type": "numberbox",
+  	"label": "Max roll value",
+    "value": 100,
+    "tooltip": "Highest roll possible",
+  	"group": "Revlo Advanced"
+  },
+    "WinChance": {
+    "type": "numberbox",
+  	"label": "Win Chance",
+    "value": 40,
+    "tooltip": "Chance in % to win",
+  	"group": "Revlo Advanced"
+  },
+    "TripleWinEnabled": {
+    "type": "checkbox",
+    "value": true,
+	  "label": "triple win",
+    "tooltip": "Enable/Disable Chance to triple your points. (normal win is doubling your points) ",
+  	"group": "Revlo Advanced"
+  },
+    "TripleChance": {
+    "type": "numberbox",
+  	"label": "triple Win Chance",
+    "value": 2,
+    "tooltip": "Chance in % to triple your bet (2 x win amount)",
+  	"group": "Revlo Advanced"
+  },
+    "MinBet": {
+    "type": "numberbox",
+  	"label": "Min bet amount",
+    "value": 1,
+    "tooltip": "Min bet a user can place. 0 = DISABLED",
+  	"group": "Revlo Advanced"
+  },
+    "MaxBet": {
+    "type": "numberbox",
+  	"label": "Max bet amount",
+    "value": 9999,
+    "tooltip": "Max bet a user can place. 0 = DISABLED",
+  	"group": "Revlo Advanced"
+  },
+    "RMinValue": {
+    "type": "numberbox",
+  	"label": "Min roll value",
+    "value": 1,
+    "tooltip": "Min value of the rolled number",
+  	"group": "Random"
+  },
+    "RMaxValue": {
+    "type": "numberbox",
+  	"label": "Max roll value",
+    "value": 100,
+    "tooltip": "Max value of the rolled number",
+  	"group": "Random"
+  },
+    "RWinChance": {
+    "type": "numberbox",
+  	"label": "Win chance",
+    "value": 40,
+    "tooltip": "Percentage chance to win",
+  	"group": "Random"
+  },
+    "RMinBet": {
+    "type": "numberbox",
+  	"label": "Min bet amount",
+    "value": 1,
+    "tooltip": "Min bet a user can place. 0 = DISABLED",
+  	"group": "Random"
+  }, 
+    "RMaxBet": {
+    "type": "numberbox",
+  	"label": "Max bet amount",
+    "value": 9999,
+    "tooltip": "Max bet a user can place. 0 = DISABLED",
+  	"group": "Random"
+  },
+    "PMinValue": {
+    "type": "numberbox",
+  	"label": "Min roll value",
+    "value": 0,
+    "tooltip": "Min value of the rolled number. \r\n [NOTE] This is also the lowest % of the bet a viewer can get back",
+  	"group": "Percentage"
+  },  
+    "PMaxValue": {
+    "type": "numberbox",
+  	"label": "Max roll value",
+    "value": 100,
+    "tooltip": "Max value of the rolled number. \r\n [NOTE] This is also the highest % of the bet a viewer can win",
+  	"group": "Percentage"
+  },
+    "PMinBet": {
+    "type": "numberbox",
+  	"label": "Min bet amount",
+    "value": 1,
+    "tooltip": "Min bet a user can place. 0 = DISABLED",
+  	"group": "Percentage"
+  }, 
+    "PMaxBet": {
+    "type": "numberbox",
+  	"label": "Max bet amount",
+    "value": 9999,
+    "tooltip": "Max bet a user can place. 0 = DISABLED",
+  	"group": "Percentage"
+  },
+    "SMinValue": {
+    "type": "numberbox",
+  	"label": "Min roll value",
+    "value": 0,
+    "tooltip": "Min value of the rolled number. ",
+  	"group": "Single Number"
+  },
+    "SMaxValue": {
+    "type": "numberbox",
+  	"label": "Max roll value",
+    "value": 100,
+    "tooltip": "Max value of the rolled number.",
+  	"group": "Single Number"
+  },
+    "SMinBet": {
+    "type": "numberbox",
+  	"label": "Min bet amount",
+    "value": 1,
+    "tooltip": "Min bet a user can place. 0 = DISABLED",
+  	"group": "Single Number"
+  },
+   "SMaxBet": {
+    "type": "numberbox",
+  	"label": "Max bet amount",
+    "value": 9999,
+    "tooltip": "Max bet a user can place. 0 = DISABLED",
+  	"group": "Single Number"
+  },
+    "SWinNumbers": {
+    "type": "textbox",
+    "value": "42 69 100",
+    "label": "Winning numbers",
+    "tooltip": "Winning numbers, seperated by space",
+    "group": "Single Number"
+  },
+    "SMultiplier": {
+    "type": "numberbox",
+  	"label": "Win multiplier",
+    "value": 30,
+    "tooltip": "How much to multiply the the bet with in case of win!",
+  	"group": "Single Number"
+  },
+  "ControlC": {
+    "type": "button",
+    "label": "PLACEHOLDER",
+    "tooltip": "Copy the filepath for index.html directly to clipboard for easy insertion in your streaming software",
+    "function": "ControlC",
+    "wsevent": "",
+    "group": ""
+  },
+    "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+	},
+    "openReadMe": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "group": ""
+  }
+}

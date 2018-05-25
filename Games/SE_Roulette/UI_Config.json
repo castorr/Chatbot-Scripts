@@ -1,0 +1,146 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!roulette",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+  "Cost": {
+    "type": "numberbox",
+  	"label": "Cost",
+    "value": 0,
+    "tooltip": "Cost to use the command",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+    "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "Enable/Disable cooldown for caster",
+  	"group": "Cooldown"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't that many {1} to gamble!",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user doesn't have enough points \r\n {0} = user",
+    "group": "Responses"
+  },
+    "WinResponse": {
+    "type": "textbox",
+    "value": "/me {0} won {1} {2} in roulette and now has {3} {2}! FeelsGoodMan",
+    "label": "Win response",
+    "tooltip": "Message sent when user wins the roulette \r\n {0} = user \r\n {1} = points won \r\n {2} = points after win \r\n {3} = Currency name",
+    "group": "Responses"
+  },
+    "LoseResponse": {
+    "type": "textbox",
+    "value": "/me {0} lost {1} {2} in roulette and now has {3} {2}! FeelsBadMan",
+    "label": "Lose response",
+    "tooltip": "Message sent when user lose the roulette \r\n {0} = user \r\n {1} = points lost \r\n {2} = Currency name \r\n {3} = points after loss",
+    "group": "Responses"
+  },
+    "AllWin": {
+    "type": "textbox",
+    "value": "/me PogChamp {0} went all in and won {1} {2} PogChamp they now has {3} {2} FeelsGoodMan",
+    "label": "All in win response",
+    "tooltip": "Message sent when user wins the roulette \r\n {0} = user \r\n {1} = points won \r\n {3} = Currency name \r\n {3} = points after win",
+    "group": "Responses"
+  },
+    "AllLose": {
+    "type": "textbox",
+    "value": "/me {0} went all in and lost every single one of their {1} {2} LUL",
+    "label": "All in lose response",
+    "tooltip": "Message sent when user lose the roulette \r\n {0} = user \r\n {1} = points lost \r\n {2} = Currency name ",
+    "group": "Responses"
+  },
+    "InfoResponse": {
+    "type": "textbox",
+    "value": "{0} you have to chose a number without decimals to gamble, or use \"all\" to go all in!",
+    "label": "Info response",
+    "tooltip": "Message sent when user doesn't use the command correctly! \r\n{0} = user ",
+    "group": "Responses"
+  },
+   "PermissionResp": {
+    "type": "textbox",
+    "value": "{0} -> only {1} ({2}) and higher can use this command",
+    "label": "Permission denied response",
+    "tooltip": "Message sent when user doesn't have the correct permission. \r\n{0} = user \r\n{1} = permission\r\n{2} = permission info",
+    "group": "Responses"
+  },
+    "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  }
+}

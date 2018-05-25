@@ -1,0 +1,169 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!roulette",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+  "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+    "MaxBet": {
+    "type": "numberbox",
+  	"label": "Max bet amount",
+    "value": 0,
+    "tooltip": "Max bet a user can place. 0 = DISABLED",
+  	"group": "General"
+  },
+    "MinBet": {
+    "type": "numberbox",
+  	"label": "Min bet amount",
+    "value": 0,
+    "tooltip": "Min bet a user can place. 0 = DISABLED",
+  	"group": "General"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "Enable/Disable cooldown for caster",
+  	"group": "Cooldown"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "BaseResponse": {
+    "type": "textbox",
+    "value": "{0} spins the roulette and it lands on {2} {1} ...  ",
+    "label": "Base response with roll",
+    "tooltip": " {0} = user \r\n {1} = number \r\n {2} = color",
+    "group": "Responses"
+  },
+
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have that many {1} to gamble ",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user try to gamble more than they have \r\n {0} = user \r\n {1} = Currency name \r\n {2} = command name",
+    "group": "Responses"
+  },
+    "WinResponse": {
+    "type": "textbox",
+    "value": "{0} won {1} {3} and now has {2} {3} ",
+    "label": "Win response",
+    "tooltip": "Message sent when user wins \r\n {0} = user \r\n {1} = value won \r\n {2} = points after win \r\n {3} = Currency name",
+    "group": "Responses"
+  },
+    "LoseResponse": {
+    "type": "textbox",
+    "value": "{0} lost {1} {3} and now has {2} {3} ",
+    "label": "Lose response",
+    "tooltip": "Message sent when user doesn't have enough points! \r\n {0} = user \r\n {1} = value won \r\n {2} = points after win \r\n {3} = Currency name",
+    "group": "Responses"
+  },
+    "TooMuchResponse": {
+    "type": "textbox",
+    "value": "{0} you can't gamble more than {1} {2} ",
+    "label": "Gambling too much",
+    "tooltip": "Message sent when user tries to gamble more than allowed \r\n {0} = user \r\n {1} = max bet amount \r\n {2} = currencyname",
+    "group": "Responses"
+  },
+    "TooLowResponse": {
+    "type": "textbox",
+    "value": "{0} you can't gamble less than {1} {2} ",
+    "label": "Gambling too little",
+    "tooltip": "Message sent when user tries to gamble less than allowed \r\n {0} = user \r\n {1} = min bet amount \r\n {2} = currencyname",
+    "group": "Responses"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "{0} -> only {1} ({2}) and higher can use this command",
+    "label": "Info response",
+    "tooltip": "Message sent when user doesn't have the required permission. \r\n{0} = user \r\n{1} = valid wires",
+    "group": "Responses"
+  },
+    "InfoResponse": {
+    "type": "textbox",
+    "value": "To spin the roulette use !Roulette [option] [amount]. Available options to bet on: high, low, red, black, even, odd, zero, basket, dozen1-3, column1-3, any single number. For more information on the payout amounts check this link: http://imgur.com/a/uu1Yf ",
+    "label": "Permission response",
+    "tooltip": "Message sent when user doesn't manage to gamble correctly",
+    "group": "Responses"
+  },
+  "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  },
+  "openReadMe": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "group": ""
+  }
+}

@@ -1,0 +1,154 @@
+﻿{
+  "output_file": "settings.json",
+    "Command": {
+    "type": "textbox",
+    "value": "!ffa2",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+  "Cost": {
+    "type": "numberbox",
+  	"label": "Cost",
+    "value": 50,
+    "tooltip": "Cost to use the command",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Join Permission",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Join Info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+  "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (min)",
+    "value": 1,
+    "tooltip": "Cooldown in minutes.",
+  	"group": "General"
+  },
+    "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Discord Chat"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+  "StartDelay": {
+    "type": "numberbox",
+  	"label": "Start Delay (min)",
+    "value": 1,
+    "tooltip": "Number of minutes from that the command first is triggered until the fight starts",
+  	"group": "General"
+  },
+  "MinEntries": {
+    "type": "numberbox",
+  	"label": "Min entries",
+    "value": 2,
+    "tooltip": "Minimum entries required to start the free for all",
+  	"group": "General"
+  },
+  "MaxSurvivors": {
+    "type": "numberbox",
+  	"label": "Max Survivors",
+    "value": 1,
+    "tooltip": "Max amount of users that can survive the free for all",
+  	"group": "General"
+  },
+  "OpenEntriesMessage": {
+    "type": "textbox",
+    "value": "The arena is now open! Type $command to join!",
+  	"label": "Open Entries Message",
+    "tooltip": "",
+  	"group": "Messages"
+  },
+  "StartingMessage": {
+    "type": "textbox",
+    "value": "The combatants have stepped in to the arena.... Who will emerge victorious?!",
+  	"label": "Starting Message",
+    "tooltip": "",
+  	"group": "Messages"
+  },
+  "AbortMessage": {
+    "type": "textbox",
+    "value": "Not enough people were interested so the Arena has been called off.",
+  	"label": "Abort Message",
+    "tooltip": "",
+  	"group": "Messages"
+  },
+  "FightMessage": {
+    "type": "textbox",
+    "value": "The combatants are going head to head in the arena... You can hear their weapons clashing and sparks fly in all directions... Suddenly a sand storm erupt....",
+  	"label": "Fight Messages",
+    "tooltip": "",
+  	"group": "Messages"
+  },
+  "EndingMessage": {
+    "type": "textbox",
+    "value": "The dust finally settled and only the following people emerged: $results",
+  	"label": "Ending Messages",
+    "tooltip": "",
+  	"group": "Messages"
+  },
+  "OffCooldown": {
+    "type": "textbox",
+    "value": "The arena has been cleaned up... Want to go again?! Type $command to start!",
+  	"label": "Off Cooldown Message",
+    "tooltip": "",
+  	"group": "Messages"
+  },
+  "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Messages"
+  },
+    "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "On Cooldown Message",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Messages"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have enough points!",
+    "label": "Not enough currency Message",
+    "tooltip": "Message sent when user doesn't have enough points \r\n {0} = user",
+    "group": "Messages"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "{0} -> only {1} ({2}) and higher can use this command",
+    "label": "Permission denied Message",
+    "tooltip": "Message sent when user doesn't select any valid wire. \r\n{0} = user \r\n{1} = permission\r\n{2} = permission info",
+    "group": "Messages"
+  },
+    "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  },
+    "openReadMe": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "group": ""
+  }
+}

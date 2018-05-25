@@ -1,0 +1,75 @@
+﻿{
+  "output_file": "settings.json",
+    "Enabled": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Discord to Stream",
+    "tooltip": "Forwarding messages from discord chat to Stream chat",
+  	"group": ""
+  },
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Only when stream is online",
+    "tooltip": "Forwarding messages only when stream is live",
+  	"group": ""
+  },
+    "DM": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Include Discord DM",
+    "tooltip": "Forward discord direct messages on top of chat messages",
+  	"group": ""
+  },
+    "BaseResponse": {
+    "type": "textbox",
+    "value": "[DISCORD] {0}: {1}",
+    "label": "Message format",
+    "tooltip": "Format for messages to forward. {1} {0} = user \r\n{1} = Message",
+    "group": ""
+  },
+    "DEnabled": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Stream to Discord",
+    "tooltip": "Forwarding messages from stream chat to discord chat",
+  	"group": ""
+  },
+    "NotLive": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Only when stream is offline",
+    "tooltip": "Forwarding messages only when stream is offline",
+  	"group": ""
+  },
+    "Whispers": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Include Strean Whispers",
+    "tooltip": "Forward Strean whispers on top of chat messages",
+  	"group": ""
+  },
+    "Response": {
+    "type": "textbox",
+    "value": "[STREAM] {0}: {1}",
+    "label": "Message format",
+    "tooltip": "Format for messages to forward. {1} {0} = user \r\n{1} = Message",
+    "group": ""
+  },
+  "SetDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Restores all script settings to the default ones!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  },
+  "openReadMe": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "": "Help"
+  },  
+}

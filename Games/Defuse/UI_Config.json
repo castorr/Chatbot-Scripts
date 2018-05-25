@@ -1,0 +1,272 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!defuse",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+  "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+  "Cost": {
+    "type": "numberbox",
+  	"label": "Cost",
+    "value": 500,
+    "tooltip": "Cost to use the command",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+  "Mode": {
+    "type": "dropdown",
+    "value": "3 Wires",
+    "items": ["3 Wires","4 Wires","5 Wires"],
+    "label": "Mode",
+    "tooltip": "Set the mode of the game \r\n \r\n3 Wires = less risk less reward (same as the deepbot version by Alixe.)\r\n4 Wires = 4 different wires instead of 3, making the risk and reward higher!\r\n5 Wires = 5 wires, risk and reward is even higher",
+    "group": "General"
+  },
+  "UseRandom": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Use random payouts",
+    "tooltip": "If checked the payouts will be randomized between a min and max value that are both bigger than the cost",
+  	"group": "General"
+  },
+  "BWS": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Play defuse gif",
+    "tooltip": "Play gif when successfully defused",
+    "group": "Alert (bomb defused)"
+  },
+  "Gif": {
+    "type": "textbox",
+    "value": "https://i.imgur.com/gInovKi.gif",
+    "label": "Defuse GIF link",
+    "tooltip": "Link to the gif to play when the bomb is successfully defused",
+    "group": "Alert (bomb defused)"
+  },
+  "Duration": {
+    "type": "numberbox",
+    "value": 5,
+    "label": "GIF duration (seconds)",
+    "tooltip": "Duration in seconds that the gif will be shown.",
+    "group": "Alert (bomb defused)"
+  },
+  "PS": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Play sound",
+    "tooltip": "Play sound when successfully defused",
+    "group": "Alert (bomb defused)"
+  },
+  "SF": {
+    "type": "textbox",
+    "value": "test.mp3",
+    "label": "Soundfile",
+    "tooltip": "Soundfile to play if play sound is enabled.\r\nThis file must be located in the scripts sound folder, button below to open it.",
+    "group": "Alert (bomb defused)"
+  },
+  "BWSB": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Play detonation gif",
+    "tooltip": "Play gif when bomb is detonated",
+    "group": "Alert (bomb detonated)"
+  },
+  "GifB": {
+    "type": "textbox",
+    "value": "https://i.imgur.com/6bphR3T.gif",
+    "label": "Detonation GIF link",
+    "tooltip": "Link to the gif to play when the bomb is detonated",
+    "group": "Alert (bomb detonated)"
+  },
+  "DurationB": {
+    "type": "numberbox",
+    "value": 5,
+    "label": "GIF duration (seconds)",
+    "tooltip": "Duration in seconds that the gif will be shown.",
+    "group": "Alert (bomb detonated)"
+  },
+  "PSB": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Play sound",
+    "tooltip": "Play sound when successfully detonated",
+    "group": "Alert (bomb detonated)"
+  },
+  "SFB": {
+    "type": "textbox",
+    "value": "test.mp3",
+    "label": "Soundfile",
+    "tooltip": "Soundfile to play if play sound is enabled.\r\nThis file must be located in the scripts sound folder, button below to open it.",
+    "group": "Alert (bomb detonated)"
+  },
+  "Timeout": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Timeout",
+    "tooltip": "Timeout users who fail to defuse the bomb. Only works for Twitch",
+    "group": "Alert (bomb detonated)"
+  },
+  "TL": {
+    "type": "numberbox",
+  	"label": "Timeout Length (seconds)",
+    "value": 60,
+    "tooltip": "Timeout length in seconds",
+  	"group": "Alert (bomb detonated)"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown (All Modes)"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown (All Modes)"
+  },
+    "OnCooldown": {
+    "type": "textbox",
+    "value": "$user the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown (All Modes)"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown (All Modes)"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "$user the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown (All Modes)"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "Enable/Disable cooldown for caster",
+  	"group": "Cooldown (All Modes)"
+  },
+    "BaseResponse": {
+    "type": "textbox",
+    "value": "The bomb is beeping and $user cuts the $target wire... ",
+    "label": "Base response",
+    "tooltip": "First part of the response that is followed by either win or lose response directly after\r\n {0} = user \r\n {1} = wire the user cuts",
+    "group": "Responses (All Modes)"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "$user you don't have enough points to get the tools needed to defuse the bomb!",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user doesn't have enough points \r\n {0} = user",
+    "group": "Responses (All Modes)"
+  },
+    "WinResponse": {
+    "type": "textbox",
+    "value": "the bomb goes silent. As a thanks for saving the day you got awarded {1} $currencyname and now has {2} $currencyname ",
+    "label": "Win response",
+    "tooltip": "Message sent when user wins \r\n {0} = user \r\n {1} = value won \r\n {2} = points after win \r\n {3} = Currency name",
+    "group": "Responses (All Modes)"
+  },
+    "LoseResponse": {
+    "type": "textbox",
+    "value": " BOOM!!! The bomb explodes, you lost {1} $currencyname and now have {2} $currencyname{2} {3}",
+    "label": "Lose response",
+    "tooltip": "Message sent when user fails to defuse the bomb \r\n {0} = user \r\n {1} = lost won \r\n {2} = points after loss \r\n {3} = Currency name",
+    "group": "Responses (All Modes)"
+  },
+    "InfoResponse": {
+    "type": "textbox",
+    "value": "$user you have to chose one of the following wires to cut: {1}",
+    "label": "Info response",
+    "tooltip": "Message sent when user doesn't have the required permission. \r\n{0} = user \r\n{1} = valid wires",
+    "group": "Responses (All Modes)"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "$user -> only $permission ($permissioninfo) and higher can use this command",
+    "label": "Permission denied response",
+    "tooltip": "Message sent when user doesn't select any valid wire. \r\n{0} = user \r\n{1} = permission\r\n{2} = permission info",
+    "group": "Responses (All Modes)"
+  },
+  "Volume": {
+    "type": "slider",
+	  "label": "Volume",
+    "value": 50,
+  	"min": 1,
+  	"max": 100,
+  	"ticks": 1,
+    "tooltip": "Volume used for all sounds",
+  	"group": ""
+  },
+    "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  },
+  "CalculateChances": {
+    "type": "button",
+    "label": "Calculate Chances",
+    "tooltip": "Tests the outcome of 1million cuts in your current gamemode!",
+    "function": "CalculateChances",
+    "wsevent": "",
+    "group": ""
+  },
+  "openSoundFolder": {
+    "type": "button",
+    "label": "Open Sounds Folder",
+    "tooltip": "Opens the sounds folder",
+    "function": "OpenSoundFolder",
+    "wsevent": "",
+    "group": ""
+  },
+    "openReadMe": {
+    "type": "button",
+    "label": "Open README.txt",
+    "tooltip": "Opens the README.txt for this script",
+    "function": "OpenReadMe",
+    "wsevent": "",
+    "group": ""
+  }
+}

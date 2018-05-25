@@ -1,0 +1,207 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!makeitrain",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+  "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+    "Cost": {
+    "type": "numberbox",
+    "value": 300,
+    "label": "Cost",
+    "tooltip": "Base cost on using the command",
+    "group": "Points"
+  },
+    "Payout": {
+    "type": "numberbox",
+    "value": 30,
+    "label": "Payout to each viewer",
+    "tooltip": "How many points to give to each viewer when command is successful",
+    "group": "Points"
+  },
+    "Random": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Random payout",
+    "tooltip": "Payout amount is randomized from the min and max value",
+  	"group": "Points"
+  },
+    "Min": {
+    "type": "numberbox",
+    "value": 10,
+    "label": "Min payout amount",
+    "tooltip": "Minimum payout amount IF random payout is used",
+    "group": "Points"
+  },
+    "Max": {
+    "type": "numberbox",
+    "value": 50,
+    "label": "Max payout amount",
+    "tooltip": "Maximum payout amount IF random payout is used",
+    "group": "Points"
+  },
+  "PS": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Play sound",
+    "tooltip": "Play sound when successfully triggered",
+    "group": "Alert"
+  },
+  "SF": {
+    "type": "textbox",
+    "value": "test.mp3",
+    "label": "Soundfile",
+    "tooltip": "Soundfile to play if play sound is enabled.\r\nThis file must be located in the scripts sound folder, button below to open it.",
+    "group": "Alert"
+  },
+  "Volume": {
+    "type": "slider",
+	  "label": "Volume",
+    "value": 50,
+  	"min": 1,
+  	"max": 100,
+  	"ticks": 1,
+    "tooltip": "Volume used for all sounds",
+  	"group": "Alert"
+  },
+  "BWS": {
+    "type": "checkbox",
+    "value": false,
+    "label": "Play gif",
+    "tooltip": "Play gif when successfully triggered",
+    "group": "Alert"
+  },
+  "Gif": {
+    "type": "textbox",
+    "value": "https://media3.giphy.com/avatars/100soft/WahNEDdlGjRZ.gif",
+    "label": "GIF link",
+    "tooltip": "Link to the gif to play if play gif is enabled.",
+    "group": "Alert"
+  },
+  "Duration": {
+    "type": "numberbox",
+    "value": 5,
+    "label": "GIF duration (seconds)",
+    "tooltip": "Duration in seconds that the gif will be shown.",
+    "group": "Alert"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+   "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+   	"group": "Cooldown"
+  },
+    "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "If enabled the caster ignore cooldowns!",
+  	"group": "Cooldown"
+  },
+    "BaseResponse": {
+    "type": "textbox",
+    "value": "{0} just spent {1} {3} to make it rain! Everyone in chat got awarded {2} {3}!",
+    "label": "Success message",
+    "tooltip": " {0} = user \r\n {1} = command cost \r\n {2} = points everyone gained \r\n {3} = currency name",
+    "group": "Responses"
+  },
+    "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have enough points to make it rain",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user doesn't have enough points! \r\n {0} = user \r\n {1} = Currency name \r\n {2} = command name \r\n {3} = command cost",
+    "group": "Responses"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "{0} -> only {1} ({2}) and higher can use this command",
+    "label": "Info response",
+    "tooltip": "Message sent when user doesn't have the required permission. \r\n{0} = user \r\n{1} = valid wires",
+    "group": "Responses"
+  },
+    "BtnDefaults": {
+		"type": "button",
+		"label": "Restore Default Settings",
+		"tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+		"function": "SetDefaults",
+		"wsevent": "",
+		"group": ""
+  },
+  "openFolder": {
+    "type": "button",
+    "label": "Locate Index.html",
+    "tooltip": "Opens the folder containing index.html used for overlay in OBS or Xsplit",
+    "function": "OpenFolder",
+    "wsevent": "",
+    "group": ""
+  },
+  "openSoundFolder": {
+    "type": "button",
+    "label": "Open Sounds Folder",
+    "tooltip": "Opens the sounds folder",
+    "function": "OpenSoundFolder",
+    "wsevent": "",
+    "group": ""
+  }
+}
