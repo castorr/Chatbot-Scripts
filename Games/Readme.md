@@ -1,6 +1,6 @@
 # Games
-Here I will upload a couple of minigames to be used in the chat of Twitch, Mixer & YouTube
-[Defuse]
+Here I will upload a couple of minigames to be used in the chat of Twitch, Mixer & YouTube  
+- [Defuse](https://github.com/castorr/Chatbot-Scripts/blob/master/Games/Readme.md#defuse)  
 [Free For All]
 [Gamble]
 [Roulette]
@@ -18,9 +18,9 @@ Here I will upload a couple of minigames to be used in the chat of Twitch, Mixer
 - Sound triggers
 - GIF/image triggers
 
-> Free For All
-> Gamble
-> Roulette
-> Russian Roulette
-> StreamElements Roulette
-> Steal
+## Free For All
+## Gamble
+## Roulette
+## Russian Roulette
+## StreamElements Roulette
+## Steal
