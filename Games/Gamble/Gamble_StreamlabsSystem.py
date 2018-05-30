@@ -16,12 +16,13 @@ import ctypes
 ScriptName = "Gamble"
 Website = "https://www.twitch.tv/castorr91"
 Creator = "Castorr91"
-Version = "2.1.6"
+Version = "2.1.7"
 Description = "Gamble minigame"
 #---------------------------------------
 # Versions
 #---------------------------------------
 """ Major and recent Releases (open README.txt for full release notes)
+2.1.7   - Fixed issues with saving and loading some settings, mainly jackpot amount
 2.1.6   - Fixed username showing as userid for certain responses
 2.1.5   - Fixed $permissioninfo
         - Added no currency response
@@ -45,7 +46,7 @@ Description = "Gamble minigame"
 #---------------------------------------
 # Variables
 #---------------------------------------
-settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
+settingsfile = os.path.join(os.path.dirname(__file__), "settings.json")
 jackpotFile = os.path.join(os.path.dirname(__file__), "jackpot.txt")
 MessageBox = ctypes.windll.user32.MessageBoxW
 MB_YES = 6
@@ -56,9 +57,9 @@ class Settings:
     """" Loads settings from file if file is found if not uses default values"""
 
     # The 'default' variable names need to match UI_Config
-    def __init__(self, settingsFile=None):
-        if settingsFile and os.path.isfile(settingsFile):
-            with codecs.open(settingsFile, encoding='utf-8-sig', mode='r') as f:
+    def __init__(self, settingsfile=None):
+        if settingsfile and os.path.isfile(settingsfile):
+            with codecs.open(settingsfile, encoding='utf-8-sig', mode='r') as f:
                 self.__dict__ = json.load(f, encoding='utf-8-sig')
 
         else: #set variables if no custom settings file is found
@@ -151,12 +152,19 @@ def SetDefaults():
         returnValue = MessageBox(0, u"Settings successfully restored to default values"
                                  , u"Reset complete!", 0)
         global MySet
-        Settings.Save(MySet, settingsFile)
+        Settings.Save(MySet, settingsfile)
 
 def ReloadSettings(jsondata):
     """Reload settings on pressing the save button"""
-    global MySet
-    MySet.Reload(jsondata)
+    Init()
+
+def SaveSettings():
+    """Save settings on pressing the save button"""
+    Settings.Save(MySet, settingsfile)
+    jackpot = MySet.Jackpot
+
+    with open(jackpotFile, "w+") as f:
+        f.write(str(jackpot))
 
 #---------------------------------------
 # Optional functions
@@ -237,19 +245,19 @@ def ControlC():
 def Init():
     """data on Load, required function"""
     global MySet
-    MySet = Settings(settingsFile)
+    MySet = Settings(settingsfile)
 
     if MySet.Usage == "Twitch Chat":
         MySet.Usage = "Stream Chat"
-        Settings.Save(MySet, settingsFile)
+        Settings.Save(MySet, settingsfile)
 
     elif MySet.Usage == "Twitch Whisper":
         MySet.Usage = "Stream Whisper"
-        Settings.Save(MySet, settingsFile)
+        Settings.Save(MySet, settingsfile)
 
     elif MySet.Usage == "Twitch Both":
         MySet.Usage = "Stream Both"
-        Settings.Save(MySet, settingsFile)
+        Settings.Save(MySet, settingsfile)
 
     global jackpot
     jackpot = MySet.Jackpot
@@ -470,7 +478,7 @@ def Percentage(data):
         global jackpot
         jackpot += int(gambleInt*MySet.JackpotPercentage/100)
         MySet.Jackpot = jackpot
-        Settings.Save(MySet, settingsFile)
+        Settings.Save(MySet, settingsfile)
 
         with open(jackpotFile, "w+") as f:
             f.write(str(jackpot))
@@ -605,7 +613,7 @@ def HandleJackpot(data, roll, bet):
     SendResp(data, MySet.Usage, message + jackpotMessage)
 
     MySet.Jackpot = MySet.JackpotBase
-    Settings.Save(MySet, settingsFile)
+    Settings.Save(MySet, settingsfile)
     jackpot = MySet.Jackpot
 
     with open(jackpotFile, "w+") as f:
@@ -638,7 +646,7 @@ def HandleLoss(data, roll, bet):
 
     jackpot += int(bet*MySet.JackpotPercentage/100)
     MySet.Jackpot = jackpot
-    MySet.Save(settingsFile)
+    MySet.Save(settingsfile)
 
     with open(jackpotFile, "w+") as f:
         f.write(str(jackpot))

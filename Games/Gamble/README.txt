@@ -9,6 +9,8 @@ Website: https://www.twitch.tv/castorr91
 #####################
 #     Versions      #
 #####################
+2.1.7   - Jackpot now saves and reloads properly
+
 2.1.6   - Fixed username showing as userid for certain messages
 
 2.1.5   - Fixed $permissioninfo
