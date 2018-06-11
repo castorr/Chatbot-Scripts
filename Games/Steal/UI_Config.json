@@ -1,0 +1,174 @@
+﻿{
+  "output_file": "settings.json",
+    "OnlyLive": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Only when live",
+    "tooltip": "Command is only active when stream is live",
+  	"group": "General"
+  },
+    "Command": {
+    "type": "textbox",
+    "value": "!steal",
+  	"label": "Command Name",
+    "tooltip": "The command the bot will respond to",
+  	"group": "General"
+  },
+  "Cost": {
+    "type": "numberbox",
+  	"label": "Cost",
+    "value": 10,
+    "tooltip": "Cost to use the command",
+  	"group": "General"
+  },
+    "Permission": {
+    "type": "dropdown",
+    "value": "Everyone",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "Permission level",
+    "tooltip": "Set the permission level for the command",
+    "group": "General"
+  },
+    "PermissionInfo": {
+    "type": "textbox",
+    "value": "",
+    "label": "Permission level info",
+    "tooltip": "Set the user, rank or tier for permission",
+    "group": "General"
+  },
+  "Usage": {
+    "type": "dropdown",
+    "value": "Stream Chat",
+    "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
+    "label": "Usage",
+    "tooltip": "Usage for where the script can be used!",
+    "group": "General"
+  },
+    "UseCD": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Use Cooldown Messages",
+    "tooltip": "Enable/Disable cooldown messages",
+  	"group": "Cooldown"
+  },
+    "Cooldown": {
+    "type": "numberbox",
+  	"label": "Cooldown (seconds)",
+    "value": 0,
+    "tooltip": "Cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on cooldown for {1} seconds!",
+  	"label": "Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+    "UserCooldown": {
+    "type": "numberbox",
+  	"label": "User Cooldown (seconds)",
+    "value": 10,
+    "tooltip": "User cooldown in seconds.",
+  	"group": "Cooldown"
+  },
+    "OnUserCooldown": {
+    "type": "textbox",
+    "value": "{0} the command is still on user cooldown for {1} seconds!",
+  	"label": "User Cooldown Response",
+    "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+  	"group": "Cooldown"
+  },
+  "CasterCD": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster ignores cooldown",
+    "tooltip": "Enable/Disable cooldown for caster",
+  	"group": "Cooldown"
+  },
+  "Min": {
+    "type": "numberbox",
+  	"label": "Min steal value",
+    "value": 32,
+    "tooltip": "Min steal value",
+  	"group": "Outcomes"
+  },
+  "Max": {
+    "type": "numberbox",
+  	"label": "Max steal value",
+    "value": 112,
+    "tooltip": "Max steal value",
+  	"group": "Outcomes"
+  },
+  "Protected": {
+    "type": "checkbox",
+    "value": true,
+  	"label": "Caster cannot lose",
+    "tooltip": "If enabled viewers can't steal from the broadcaster",
+  	"group": "Outcomes"
+  },
+  "Timeout": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "Timeout users who fail",
+    "tooltip": "If enabled viewers that tries to steal and fail will get timed out. Only available for Twitch ",
+  	"group": "Outcomes"
+  },
+  "TL": {
+    "type": "numberbox",
+  	"label": "Timeout length",
+    "value": 60,
+    "tooltip": "Length for the timeout if users fail to steal",
+  	"group": "Outcomes"
+  },
+    "WinResponse": {
+    "type": "textbox",
+    "value": "{0} managed to steal {1} {2} from {3}",
+    "label": "Win response",
+    "tooltip": "Message sent when user wins \r\n {0} = user \r\n {1} = value won \r\n {2} = points after win \r\n {3} = Currency name",
+    "group": "Responses"
+  },
+    "LoseResponse": {
+    "type": "textbox",
+    "value": "{0} tried to steal some {1} from {2} but {0} got rekt and {2} managed to steal {3} {1} from {0} instead!",
+    "label": "Lose response",
+    "tooltip": "Message sent when user fails to defuse the bomb \r\n {0} = user \r\n {1} = currencyname \r\n {2} = target \r\n {3} = amount of currency stolen",
+    "group": "Responses"
+  },
+    "InfoResponse": {
+    "type": "textbox",
+    "value": "{0} you have to chose a target to try to steal from",
+    "label": "Info response",
+    "tooltip": "Message sent when user doesn't have the required permission. \r\n{0} = user",
+    "group": "Responses"
+  },
+  "NotEnoughResponse": {
+    "type": "textbox",
+    "value": "{0} you don't have enough {1} to attempt this!",
+    "label": "Not enough currency response",
+    "tooltip": "Message sent when user doesn't have enough points \r\n {0} = user \r\n {1} = Currencyname",
+    "group": "Responses"
+  },
+  "PermissionResp": {
+    "type": "textbox",
+    "value": "{0} -> only {1} ({2}) and higher can use this command",
+    "label": "Permission denied response",
+    "tooltip": "Message sent when user doesn't select any valid wire. \r\n{0} = user \r\n{1} = permission\r\n{2} = permission info",
+    "group": "Responses"
+  },
+  "NotHere": {
+    "type": "textbox",
+    "value": "{0} you can only steal from users who are currently in the viewerlist and that got at least {1} {2}. They can however get some free {2} if you try!",
+    "label": "Bad target",
+    "tooltip": "Message sent when user doesn't select a user that's currently in the viewerlist. \r\n {0} = user \r\n {1} = min value \r\n {2} = currencyname",
+    "group": "Responses"
+  },
+    "BtnDefaults": {
+    "type": "button",
+    "label": "Restore Default Settings",
+    "tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+    "function": "SetDefaults",
+    "wsevent": "",
+    "group": ""
+  }
+}

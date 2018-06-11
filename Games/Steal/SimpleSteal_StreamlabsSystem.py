@@ -16,12 +16,13 @@ import ctypes
 ScriptName = "Steal"
 Website = "https://www.twitch.tv/castorr91"
 Creator = "Castorr91"
-Version = "1.0"
+Version = "1.1"
 Description = "Simple steal command"
 #---------------------------------------
 # Versions
 #---------------------------------------
 """ Releases (open README.txt for full release notes)
+1.1 - Fixed cooldowns, added mixer & youtube support
 1.0 - Initial Release
 """
 #---------------------------------------
@@ -138,6 +139,7 @@ def Execute(data):
                 value = Parent.GetRandom(MySet.Min, MySet.Max)
                 Parent.RemovePoints(data.User, data.UserName, value)
                 message = MySet.LoseResponse.format(data.UserName, Parent.GetCurrencyName(), value, data.GetParam(1))
+                AddCooldown(data)
                 return
 
             if data.GetParamCount() < 2:
@@ -161,6 +163,7 @@ def Execute(data):
                 if not Parent.RemovePoints(data.GetParam(1).lower(), data.GetParam(1).lower(), value):
                     message = MySet.NotHere.format(data.UserName, MySet.Min, Parent.GetCurrencyName())
                     SendResp(data, message)
+                    AddCooldown(data)
                     return
                 Parent.AddPoints(data.User, data.UserName, value)
                 message = MySet.WinResponse.format(data.UserName, value, Parent.GetCurrencyName(), data.GetParam(1))
@@ -181,10 +184,10 @@ def Tick():
 def SendResp(data, sendMessage):
     """Sends message to Stream or discord chat depending on settings"""
 
-    if (data.IsFromTwitch() or data.IsFromYoutube()) and not data.IsWhisper():
+    if not data.IsFromDiscord() and not data.IsWhisper():
         Parent.SendStreamMessage(sendMessage)
 
-    if (data.IsFromTwitch() or data.IsFromYoutube()) and data.IsWhisper():
+    if not data.IsFromDiscord() and data.IsWhisper():
         Parent.SendStreamWhisper(data.User, sendMessage)
 
     if data.IsFromDiscord() and not data.IsWhisper():
@@ -197,7 +200,7 @@ def CheckUsage(data, rUsage):
     """Return true or false depending on the message is sent from
     a source that's in the usage setting or not"""
 
-    if data.IsFromTwitch() or data.IsFromYoutube():
+    if not data.IsFromDiscord():
         l = ["Stream Chat", "Chat Both", "All", "Stream Both"]
         if not data.IsWhisper() and (rUsage in l):
             return True
