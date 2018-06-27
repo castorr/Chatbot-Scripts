@@ -5,88 +5,46 @@
 #---------------------------------------
 # Libraries and references
 #---------------------------------------
-from collections import deque
 import codecs
-import json
 import os
-import re
-import urllib
-import datetime
-import time
-import ctypes
 import winsound
 import ast
 import sys
 import clr
-sys.path.append(os.path.join(os.path.dirname(__file__)))
+sys.path.append(os.path.join(os.path.dirname(__file__), "Modules"))
 clr.AddReference('System.Windows.Forms')
 from System.Windows.Forms import WebBrowser, Form, DockStyle
-from Settings import Settings
+from Settingsmodule import Settings
+from Variables import *
+from Nightbot import Nightbot
+from Deepbot import Deepbot
+from Wizebot import Wizebot
+from Streamelements import Streamelements
+from Phantombot import Phantombot
+from Newparameters import New
+from Customparameters import Custom
 #---------------------------------------
 # [Required] Script information
 #---------------------------------------
-ScriptName = "CLP (Castorr's Lazy Pack)"
+ScriptName = "CLP"
 Creator = "Castorr91"
-Version = "1.1.2"
+Version = "1.2.0"
 Description = "Right click -> insert api key | Extra parameters!"
 Website = "https://www.twitch.tv/castorr91"
 #---------------------------------------
 # Versions
 #---------------------------------------
 """
-1.1.2 (BETA)
-- Fixed copy paste error in UI_Config
-- Removed some comments
-- Cleared unnecessary return statements
-- Made API's into variables
-- Followage & Followdate no longer needs () with username
-- Fixed @time@ and @time24@
-- Added $default
+1.2.0
+    - Complete code overhaul
+    - Fixed several parameters
+        - $chours
+        - $followage
+        - $followdate
 
 Version infomation for older versions
    can be found in the readme.txt
 """
-#---------------------------------------
-# Variables
-#---------------------------------------
-settingsfile = os.path.join(os.path.dirname(__file__), "settings.json")
-tweetFile = os.path.join(os.path.dirname(__file__), "tweet.txt")
-AudioFilesPath = os.path.join(os.path.dirname(__file__), "sounds")
-AudioPlaybackQueue = deque()
-MessageBox = ctypes.windll.user32.MessageBoxW
-MB_YES = 6
-
-#Twitch APIs
-AgeApi = "https://decapi.me/twitch/creation?user={0}"
-AvatarApi = "https://decapi.me/twitch/avatar/{0}"
-BTTVEmotesApi = "https://decapi.me/bttv/emotes/$mychannel"
-FFZEmotesApi = "https://decapi.me/ffz/emotes/$mychannel"
-FollowageApi = "https://beta.decapi.me/twitch/followage/$mychannel/{0}"
-FollowdateApi = "https://beta.decapi.me/twitch/followed/$mychannel/{0}"
-RandUserApi = "https://decapi.me/twitch/random_user/$mychannel?exclude={0}"
-SubEmotesApi = "https://decapi.me/twitch/subscriber_emotes/$mychannel"
-ViewersApi = "https://decapi.me/twitch/viewercount/$mychannel"
-ViewsApi = "https://decapi.me/twitch/total_views/$mychannel"
-
-#Mixer APIs
-MxAgeApi = "http://mixer.api.scorpstuff.com/joineddate.php?user={0}&timezone=UTC"
-MxAvatarApi = "http://mixer.api.scorpstuff.com/avatar.php?user={0}"
-MxFollowageApi = "http://mixer.api.scorpstuff.com/followed.php?caster=$mychannel&follower={0}"
-MxViewersApi = "http://mixer.api.scorpstuff.com/viewercount.php?caster=$mychannel"
-
-#Misc APIs
-LastTweetApi = "https://decapi.me/twitter/latest?name="
-LastYTApi = "https://decapi.me/youtube/latest_video?id="
-UrbanApi = "$readapi(http://api.scorpstuff.com/urbandictionary.php?term="
-WeatherApi = "$readapi(http://api.scorpstuff.com/weather.php?units={0}&city="
-
-#Regex
-RegGif = re.compile(r"(?:\$gif\([\ ]*(?P<link>[^\"\']+)"
-                    r"[\ ]*\,[\ ]*(?P<duration>[^\"\']*)[\ ]*\))", re.U)
-RegSound = re.compile(r"(?:\$sound\([\ ]*(?P<file>[^\"\']+)[\ ]*\))", re.U)
-RegDefault = re.compile(r"\$default\((?P<string>.*?)\)", re.U)
-RegQuery = re.compile(r"(?:\$\(querystring[\ ]*(?P<string>[^\"\']+)[\ ]*\))", re.U)
-
 #---------------------------------------
 # [Optional] Settings functions
 #---------------------------------------
@@ -157,7 +115,7 @@ def OpenReadMe():
 
 def OpenFilesFolder():
     """Opens the built in files folder"""
-    location = os.path.join(os.getcwd(), "Services\\Twitch\\Files\\")
+    location = os.path.join(os.getcwd(), "Services\\" + MySet.service + "\\Files\\")
     os.startfile(location)
 
 def ControlC():
@@ -282,564 +240,29 @@ def GetApiData(link):
 def Parse(parseString, userid, username, targetid, targetname, message):
     """Parse function"""
     if MySet.nightbot:
-        parseString = Nightbot(parseString, userid, targetid, message)
+        nightbot = Nightbot(Parent)
+        parseString = nightbot.parameters(parseString, userid, targetid, message)
 
     if MySet.streamelements:
-        parseString = StreamElements(parseString, userid, username)
+        streamelements = Streamelements(Parent, MySet)
+        parseString = streamelements.parameters(parseString, userid, username)
 
     if MySet.deepbot:
-        parseString = DeepBot(parseString, userid, targetid)
+        deepbot = Deepbot(Parent, MySet)
+        parseString = deepbot.parameters(parseString, userid, targetid, message)
 
     if MySet.phantombot:
-        parseString = PhantomBot(parseString, userid, username, targetid, targetname, message)
+        phantombot = Phantombot(Parent, MySet)
+        parseString = phantombot.parameters(parseString, userid, username, targetid, targetname, message)
 
     if MySet.wizebot:
-        parseString = WizeBot(parseString)
+        wizebot = Wizebot(Parent, MySet)
+        parseString = wizebot.parameters(parseString)
 
-    parseString = NewParameters(parseString, userid, username, targetid, targetname, message)
-    parseString = CustomParameters(parseString, userid)
+    new = New(Parent, MySet)
+    parseString = new.parameters(parseString, userid, username, targetid, targetname, message)
 
-    return parseString
+    custom = Custom(Parent, MySet)
+    parseString = custom.parameters(parseString, userid, targetid, message)
 
-def Nightbot(parseString, userid, targetid, message):
-    """Parse nightbot parameters if enabled"""
-
-    if "$(user)" in parseString:
-        parseString = parseString.replace("$(user)", userid)
-
-    if "$(touser)" in parseString:
-        if len(message) > 1:
-            parseString = parseString.replace("$(touser)", targetid)
-        else:
-            parseString = parseString.replace("$(touser)", userid)
-
-    if "$(weather " in parseString:
-        parseString = parseString.replace("$(weather ", WeatherApi)
-
-    if "$(urlfetch " in parseString:
-        parseString = parseString.replace("$(urlfetch ", "$readapi(")
-
-    if "$(count)" in parseString:
-        tempString = ("[PARAMETER ERROR: for count to work properly you need to replace $(count) with $count in the command]")
-        parseString = parseString.replace("$(count)", tempString)
-
-    if "$(channel)" in parseString:
-        parseString = parseString.replace("$(channel)", Praent.GetChannelName())
-
-    if "$(query)" in parseString:
-        parseString = parseString.replace("$(query)", "$msg")
-
-    if "$(querystring)" in parseString:
-        QueryString = urllib.quote_plus(message)
-        parseString = parseString.replace("$(querystring)", QueryString)
-
-    if "$(time " in parseString:
-        parseString = parseString.replace("$time ", "$readapi(https://beta.decapi.me/misc/time?timezone=")
-
-    #end of nightbot function
-    return parseString
-
-def StreamElements(parseString, userid, username):
-    """Parse parameters from StreamElements"""
-    #-----------------------------------------------
-    # Parameters from StreamElements
-    #-----------------------------------------------
-    if "${user}" in parseString:
-        parseString = parseString.replace("${user}", userid)
-
-    if "${user.name}" in parseString:
-        parseString = parseString.replace("${user.name}", username)
-
-    if "${user.points}" in parseString:
-        parseString = parseString.replace("${user.points}", str(Parent.GetPoints(data.User)))
-
-    if "${user.points_rank}" in parseString:
-        parseString = parseString.replace("${user.points_rank}", "$pointspos")
-
-    if "${user.time_online}" in parseString:
-        parseString = parseString.replace("${user.time_online}", str(Parent.GetHours(data.User)))
-
-    if "${user.time_online_rank}" in parseString:
-        parseString = parseString.replace("${user.time_online_rank}", "$hourspos")
-
-    if "${sender}" in parseString:
-        parseString = parseString.replace("${sender}", userid)
-
-    if "${source}" in parseString:
-        parseString = parseString.replace("${source}", userid)
-
-    if "${title}" in parseString:
-        parseString = parseString.replace("${title}", "$mystatus")
-
-    if "${status}" in parseString:
-        parseString = parseString.replace("${status}", "$mystatus")
-
-    if "${game}" in parseString:
-        parseString = parseString.replace("${game}", "$mygame")
-
-    if "${pointsname}" in parseString:
-        parseString = parseString.replace("${pointsname}", Parent.GetCurrencyName())
-
-    if "${channel}" in parseString:
-        parseString = parseString.replace("${channel}", Parent.GetChannelName())
-
-    if "${channel.viewers}" in parseString:
-        if MySet.service == "Twitch":
-            link = ViewersApi.replace("$mychannel", Parent.GetChannelName())
-        elif MySet.service == "Mixer":
-            link = MxViewersApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("${channel.viewers}", returnValue)
-
-    if "${channel.views}" in parseString:
-        if MySet.service == "Twitch":
-            link = ViewsApi.replace("$mychannel", Parent.GetChannelName())
-            returnValue = GetApiData(link)
-        elif MySet.service == "Mixer":
-            returnValue = "[Currently this parameter isn't available for mixer]"
-        parseString = parseString.replace("${channel.views}", returnValue)
-
-    if "${channel.followers}" in parseString:
-        parseString = parseString.replace("${channel.followers}", "$followercount")
-
-    if "${channel.subs}" in parseString:
-        parseString = parseString.replace("${channel.subs}", "$subcount")
-
-    if "${random.chatter}" in parseString:
-        parseString = parseString.replace("${random.chatter}", "$randuser")
-
-    if "${uptime}" in parseString:
-        parseString = parseString.replace("${uptime}", "$uptime")
-
-    if "${count" in parseString:
-        parseString = parseString.replace("${count", "[PARAMETER ERROR: for count to work properly you need to replace ${count} with $count in the command]")
-
-    if "${getcount" in parseString:
-        parseString = parseString.replace("${getcount", "[PARAMETER ERROR: for count to work properly you need to replace ${getcount} with $checkcount(COMMAND_NAME) in the command]")
-
-    #end of streamlemenets function
-    return parseString
-
-def DeepBot(parseString, userid, targetid):
-    """Parse deepbot parameters"""
-    if "@user@" in parseString:
-        parseString = parseString.replace("@user@", userid)
-
-    if "@viewers@" in parseString:
-        if MySet.service == "Twitch":
-            api = ViewersApi.replace("$mychannel", Parent.GetChannelName())
-        elif MySet.service == "Mixer":
-            api = MxViewersApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(api)
-        parseString = parseString.replace("@viewers@", returnValue)
-
-    if "@time@" in parseString:
-        my_time = time.strftime("%I:%M %p", time.localtime(time.time()))
-        parseString = parseString.replace("@time@", my_time)
-
-    if "@time24@" in parseString:
-        my_time = time.strftime("%H:%M", time.localtime(time.time()))
-        parseString = parseString.replace("@time24@", my_time)
-
-    if "@title@" in parseString:
-        parseString = parseString.replace("@title@", "$mystatus")
-
-    if "@pointsname@" in parseString:
-        parseString = parseString.replace("@pointsname@", Parent.GetCurrencyName())
-
-    if "@target@" in parseString:
-        parseString = parseString.replace("@target@", targetid)
-
-    if "@pointstolevelup@" in parseString:
-        parseString = parseString.replace("@pointstolevelup@", "$nxtrankreq")
-
-    if "@randomuser@" in parseString:
-        parseString = parseString.replace("@randomuser@", "$randuser")
-
-    if "@points@" in parseString:
-        parseString = parseString.replace("@points@", "$points")
-
-    if "@intpoints@" in parseString:
-        parseString = parseString.replace("@intpoints@", "$pointstext")
-
-    if "@hrstolevelup@" in parseString:
-        parseString = parseString.replace("@hrstolevelup@", "$nxtrankreq")
-
-    if "@hours@" in parseString:
-        parseString = parseString.replace("@hours@", "$hours")
-
-    if "@getcounter@" in parseString:
-        parseString = parseString.replace("@getcounter@", "[PARAMETER ERROR: for getcounter to work properly you need to replace the getcounter with $checkcount(!command) in the command]")
-
-    if "@game@" in parseString:
-        parseString = parseString.replace("@game@", "$mygame")
-
-    if "@followers@" in parseString:
-        parseString = parseString.replace("@followers@", "$followercount")
-
-    if "@counter@" in parseString:
-        parseString = parseString.replace("@counter@", "[PARAMETER ERROR: for counter to work properly you need to replace the counter with $count in the command]")
-
-    if "@followdate@" in parseString:
-        if MySet.service == "Twitch":
-            api = FollowdateApi.replace("$mychannel", Parent.GetChannelName())
-            if len(message) > 1:
-                link = api.format(targetname)
-            else:
-                link = api.format(username)
-            returnValue = GetApiData(link)
-        elif MySet.service == "Mixer":
-            returnValue = "[Followdate is currently not supported for Mixer]"
-        parseString = parseString.replace("@followdate@", returnValue)
-
-    if "@subs@" in parseString:
-        parseString = parseString.replace("@subs@", "$subcount")
-
-    if "@customapi@" in parseString:
-        parseString = parseString.replace("@customapi@", "[ERROR: customapi needs to be replaced with the built in readapi]")
-
-    #end of deepbotfunction
-    return parseString
-
-def PhantomBot(parseString, userid, username, targetid, targetname, message):
-    """Parse PhantomBot parameters!"""
-    if "(sender)" in parseString:
-        parseString = parseString.replace("(sender)", username)
-
-    if "(@sender)" in parseString:
-        parseString = parseString.replace("(@sender)", "@" + username)
-
-    if "(touser)" in parseString:
-        if len(message) > 1:
-            parseString = parseString.replace("(touser)", targetid)
-        else:
-            parseString = parseString.replace("(touser)", userid)
-
-    if "(pointtouser)" in parseString:
-        if len(message) > 1:
-            parseString = parseString.replace("(pointtouser)", targetname + " ->")
-        else:
-            parseString = parseString.replace("(pointtouser)", username + " ->")
-
-    if "(currenttime)" in parseString:
-        parseString = parseString.replace("(currenttime)", "$time")
-
-    if "(#)" in parseString:
-        parseString = parseString.replace("(#)", "$randnum(0,101)")
-
-    if "(random)" in parseString:
-        parseString = parseString.replace("(random)", "$randuser")
-
-    if "(pointname)" in parseString:
-        parseString = parseString.replace("(pointname)", Parent.GetCurrencyName())
-
-    if "(uptime)" in parseString:
-        parseString = parseString.replace("(uptime)", "$uptime")
-
-    if "(game)" in parseString:
-        parseString = parseString.replace("(game)", "$mygame")
-
-    if "(status)" in parseString:
-        parseString = parseString.replace("(status)", "$mystatus")
-
-    if "(viewers)" in parseString:
-        if MySet.service == "Twitch":
-            api = ViewersApi.replace("$mychannel", Parent.GetChannelName())
-        elif MySet.service == "Mixer":
-            api = MxViewersApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(api)
-        parseString = parseString.replace("(viewers)", returnValue)
-
-    if "(follows)" in parseString:
-        parseString = parseString.replace("(follows)", "$followercount")
-
-    if "(count)" in parseString:
-        parseString = parseString.replace("(count)", "[PARAMETER ERROR: for count to work properly you need to replace it with the built in count]")
-
-    if "(senderrank)" in parseString:
-        parseString = parseString.replace("(senderrank)", "$rank")
-
-    if "(readfile " in parseString:
-        parseString = parseString.replace("(readfile ", "$readline(")
-
-    if "(readfilerand " in parseString:
-        parseString = parseString.replace("(readfilerand ", "$readrandline(")
-
-    if "(echo)" in parseString:
-        parseString = parseString.replace("(echo)", "$msg")
-
-    if "(titleinfo)" in parseString:
-        parseString = parseString.replace("(titleinfo)", "Current title: $mystatus Uptime: $uptime")
-
-    if "(gameinfo)" in parseString:
-        parseString = parseString.replace("(gameinfo)", "Current game: $mygame Playtime: $uptime")
-
-    if "(channelname)" in parseString:
-        parseString = parseString.replace("(channelname)", Parent.GetChannelName())
-
-    if "(subscribers)" in parseString:
-        parseString = parseString.replace("(subscribers)", "$subcount")
-
-    if "(subscribers)" in parseString:
-        parseString = parseString.replace("(subscribers)", "$subcount")
-
-    if "(age)" in parseString:
-        if MySet.service == "Twitch":
-            link = AgeApi
-        elif MySet.service == "Mixer":
-            link = MxAgeApi
-        if len(message) < 2:
-            link = link.format(userid)
-        else:
-            link = link.format(targetid)
-        parseString = parseString.replace("(age)", GetApiData(link))
-    return parseString
-
-def WizeBot(parseString):
-    """Parse WizeBot parameters"""
-    if "$(channel_name)" in parseString:
-        parseString = parseString.replace("$(channel_name)", Parent.GetChannelName())
-
-    if "$(random_viewer)" in parseString:
-        parseString = parseString.replace("$(random_viewer)", "$randuser")
-
-    if "$random(" in parseString:
-        parseString = parseString.replace("$random(", "$randnum(")
-
-    if "$(current_game)" in parseString:
-        parseString = parseString.replace("$(current_game)", "$mygame")
-
-    if "$(current_viewers)" in parseString:
-        if MySet.service == "Twitch":
-            api = ViewersApi.replace("$mychannel", Parent.GetChannelName())
-        elif MySet.service == "Mixer":
-            api = MxViewersApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(api)
-        parseString = parseString.replace("$(current_viewers)", returnValue)
-
-    if "$(todayFollow)" in parseString:
-        sessionFollows = GetTextFileContent(followFile)
-        parseString = parseString.replace("$(todayFollow)", sessionFollows)
-
-    if "$(last_follow_name)" in parseString:
-        lastFollow = GetTextFileContent(lastfollowFile)
-        parseString = parseString.replace("$(last_follow_name)", lastFollow)
-
-    if "$(session_followers)" in parseString:
-        sessionFollows = GetTextFileContent(followFile)
-        parseString = parseString.replace("$(session_followers)", sessionFollows)
-
-    if "$(follow_count)" in parseString:
-        parseString = parseString.replace("$(follow_count)", "$followercount")
-
-    if "$(sub_count)" in parseString:
-        parseString = parseString.replace("$(sub_count)", "$subcount")
-
-    #end of wizebot function
-    return parseString
-
-def NewParameters(parseString, userid, username, targetid, targetname, message):
-    """Parse new parameters"""
-    if "$default" in parseString:
-        result = RegDefault.search(parseString)
-        Parent.Log(ScriptName, str(result))
-        if result:
-            fullparameter = result.group(0)
-            defaultmessage = result.group("string")
-            if len(message) < 2:
-                parseString = defaultmessage
-            else:
-                parseString = parseString.replace(fullparameter, "")
-
-    if "$weather(" in parseString:
-        if MySet.imperial:
-            parseString = parseString.replace("$weather(", WeatherApi.format("imperial"))
-        else:
-            parseString = parseString.replace("$weather(", WeatherApi.format("metric"))
-
-    if "$followage" in parseString:
-        if MySet.service == "Twitch":
-            link = FollowageApi.replace("$mychannel", Parent.GetChannelName())
-        elif MySet.service == "Mixer":
-            link = MxFollowageApi.replace("$mychannel", Parent.GetChannelName())
-        if len(message) < 2:
-            link = link.format(userid)
-        else:
-            link = link.format(targetid)
-        parseString = parseString.replace("$followage", GetApiData(link))
-
-    if "$followdate" in parseString:
-        if MySet.service == "Twitch":
-            api = FollowdateApi.replace("$mychannel", Parent.GetChannelName())
-            api = api.format(username)
-            returnValue = GetApiData(api)
-        elif MySet.service == "Mixer":
-            returnValue = "[Followdate is currently not supported for Mixer]"
-        parseString = parseString.replace("$followdate", returnValue)
-
-    if "$viewers" in parseString:
-        if MySet.service == "Twitch":
-            link = ViewersApi.replace("$mychannel", Parent.GetChannelName())
-        elif MySet.service == "Mixer":
-            link = MxViewersApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("$viewers", returnValue)
-
-    if "$views" in parseString:
-        if MySet.service == "Twitch":
-            link = ViewsApi.replace("$mychannel", Parent.GetChannelName())
-            returnValue = GetApiData(link)
-        elif MySet.service == "Mixer":
-            returnValue = "[Currently views parameter isn't available for mixer]"
-        parseString = parseString.replace("$views", returnValue)
-
-    if "$avatar" in parseString:
-        if MySet.service == "Twitch":
-            link = AvatarApi
-        elif MySet.service == "Mixer":
-            link = MxAvatarApi
-        if len(message) > 1:
-            link = link.format(targetname)
-        else:
-            link = link.fromat(username)
-        returnValue = GetApiData(link)
-        returnValue = returnValue.replace("https://mixer.com/_latest/assets/images/main/avatars/default.jpg", "[Avatar not found]")
-        parseString = parseString.replace("$avatar", returnValue)
-
-    if "$subemotes" in parseString:
-        link = SubEmotesApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("$subemotes", returnValue)
-
-    if "$bttvemotes" in parseString:
-        link = BTTVEmotesApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("$bttvemotes", returnValue)
-
-    if "$ffzemotes" in parseString:
-        link = FFZEmotesApi.replace("$mychannel", Parent.GetChannelName())
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("$ffzemotes", returnValue)
-
-    if "$latestyt" in parseString:
-        link = LastYTApi.__add__(MySet.ytuser)
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("$latestyt", returnValue)
-
-    if "$latesttweet" in parseString:
-        api = LastTweetApi.__add__(MySet.twitteruser)
-        if MySet.norts:
-            api = api.__add__("&no_rts")
-        if MySet.tweeturl:
-            api = api.__add__("&url")
-        if MySet.tweetshort:
-            api = api.__add__("&shorten")
-        if MySet.tweethowlong:
-            api = api.__add__("&howlong")
-        returnValue = GetApiData(api)
-        parseString = parseString.replace("$latesttweet", returnValue)
-
-    if "$urban(" in parseString:
-        parseString = parseString.replace("$urban(", UrbanApi)
-
-    if "$age" in parseString:
-        if MySet.service == "Twitch":
-            link = AgeApi
-        elif MySet.service == "Mixer":
-            link = MxAgeApi
-        if len(message) > 1:
-            link = link.format(targetname)
-        else:
-            link = link.fromat(username)
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("$age", returnValue)
-
-    if "$ctt" in parseString:
-        link = MySet.ctt.replace("$mychannel", Parent.GetChannelName())
-        urlEnd = urllib.quote_plus(link)
-        url = "https://twitter.com/intent/tweet?text=".__add__(urlEnd)
-        if MySet.tweetshort:
-            url = "http://tinyurl.com/api-create.php?url={0}".format(url)
-        returnValue = GetApiData(url)
-        parseString = parseString.replace("$ctt", returnValue)
-
-    if "$setctt" in parseString:
-        if len(message) > 1:
-            MySet.ctt = message
-            Settings.save(MySet, settingsfile)
-            url_end = urllib.quote_plus(MySet.ctt)
-            url = "https://twitter.com/intent/tweet?text=".__add__(url_end)
-            if MySet.tweetshort:
-                url = "http://tinyurl.com/api-create.php?url={0}".format(url)
-                returnValue = GetApiData(url)
-            parseString = parseString.replace("$setctt", returnValue)
-        else:
-            parseString = parseString.replace("$setctt", MySet.cttfailed)
-
-    if "$sessionfollows" in parseString:
-        sessionFollows = GetTextFileContent(followFile)
-        parseString = parseString.replace("$sessionfollows", sessionFollows)
-
-    if "$lastfollow" in parseString:
-        lastFollow = GetTextFileContent(lastfollowFile)
-        parseString = parseString.replace("$lastfollow", lastFollow)
-
-    if "$torand" in parseString:
-        if len(message) > 1:
-            parseString = parseString.replace("$torand", targetname)
-        else:
-            parseString = parseString.replace("$torand", "$randuser")
-
-    if "$sound" in parseString:
-        result = RegSound.search(parseString)
-        if result:
-            fullSound = result.group(0)
-            Soundfile = result.group("file")
-            fullpath = os.path.join(AudioFilesPath, Soundfile)
-            if fullpath and os.path.isfile(fullpath):
-                EnqueueAudioFile(Soundfile)
-                parseString = parseString.replace(fullSound, "")
-            else:
-                parseString = parseString.replace(fullSound, "[ERROR: Soundfile not found]")
-
-    if "$gif" in parseString:
-
-        result = RegGif.search(parseString)
-        if result:
-            fullGif = result.group(0)
-            GifLink = result.group("link")
-
-            gifDuration = int(result.group("duration"))
-            f = {"duration": gifDuration*1000, "link": GifLink}
-            Parent.BroadcastWsEvent("EVENT_GIF", json.dumps(f, encoding='utf-8-sig'))
-
-            parseString = parseString.replace(fullGif, "")
-        else:
-            parseString = parseString.replace("$gif", "[ERROR: Seems like you have a space in the () or forgot to set a time]")
-
-    #end of NewParameters function
-    return parseString
-
-def CustomParameters(parseString, userid):
-    """Custom versions of built in parameters"""
-    if "$ctime" in parseString:
-        myTime = time.strftime(MySet.time, time.localtime(time.time()))
-        parseString = parseString.replace("$ctime", myTime)
-
-    if "$cdate" in parseString:
-        myDate = datetime.datetime.now().strftime(MySet.date)
-        parseString = parseString.replace("$cdate", myDate)
-
-    if "$cranduser" in parseString:
-        api = RandUserApi.replace("$mychannel", Parent.GetChannelName())
-        link = api.format(MySet.excluded)
-        returnValue = GetApiData(link)
-        parseString = parseString.replace("$cranduser", returnValue)
-
-    if "$ctarget" in parseString:
-        parseString = parseString.replace("$ctarget", target.replace("@", ""))
-
-    if "$chours" in parseString:
-        parseString = parseString.replace("$chours", str(int(Parent.GetHours(userid))))
-    #end of customparameters function
     return parseString

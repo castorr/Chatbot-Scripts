@@ -12,6 +12,7 @@ class Settings():
                 self.__dict__ = json.load(f, encoding='utf-8-sig')
 
         else: #set variables if no settings file is found
+            self.service = "Twitch"
             self.nightbot = True
             self.streamelements = True
             self.deepbot = True
