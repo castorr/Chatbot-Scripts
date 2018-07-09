@@ -14,6 +14,13 @@
     "tooltip": "The command the bot will respond to",
   	"group": "General"
   },
+  "ignoreredeem": {
+    "type": "checkbox",
+    "value": false,
+  	"label": "make rewardnames the command",
+    "tooltip": "Skip over using the command above and instead use !rewardname as the command",
+  	"group": "General"
+  },
     "Usage": {
     "type": "dropdown",
     "value": "Stream Chat",

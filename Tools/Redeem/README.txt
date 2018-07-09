@@ -4,7 +4,7 @@
 
 Description: Let users spend points on redeeming custom rewards
 Made By: Castorr91
-Website: https://www.twitch.tv/castorr.91
+Website: https://www.twitch.tv/castorr91
 
 #####################
 #       Usage       #
@@ -14,6 +14,10 @@ Castorrbot: Castorr91 spent 100 points to redeem a follow on instagram
 #####################
 #     Versions      #
 #####################
+1.2.0	- Rewrote most of the code
+	- Added option to exclude "redeem " from command
+	- Fixed an issue writing to textfile using non ascii characters
+
 1.1.0	- Alerts now support text below image
 
 1.0.10	- !redeem list now only return redeems that the user can actually redeem rather than all redeems
