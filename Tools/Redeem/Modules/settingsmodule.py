@@ -203,8 +203,8 @@ class Settings:
         self.__dict__ = json.loads(data, encoding='utf-8-sig')
         self.parent = parent
         if self.ChecksoundFiles() != "":
-            messageBox = ctypes.windll.user32.messageBoxW
-            winsound.messageBeep()
+            messageBox = ctypes.windll.user32.MessageBoxW
+            winsound.MessageBeep()
             returnvalue = messageBox(0, u"Some soundfiles could not be found."
                                         "\r\nMake sure the name is correct and that "
                                         "the file is located in the sounds folder"

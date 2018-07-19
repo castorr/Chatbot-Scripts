@@ -14,7 +14,8 @@ Castorrbot: Castorr91 spent 100 points to redeem a follow on instagram
 #####################
 #     Versions      #
 #####################
-2.0.0	- Updated version to 
+2.0.0	- Fixed lots of issues with variable names and MySet
+	- Added button to restore default settings
 
 1.2.0	- Rewrote most of the code
 	- Added option to exclude "redeem " from command

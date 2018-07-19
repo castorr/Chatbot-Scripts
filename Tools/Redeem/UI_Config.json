@@ -1245,5 +1245,13 @@
     "function": "ResetRedeems",
     "wsevent": "",
     "group": ""
+  },
+  "BtnDefaults": {
+		"type": "button",
+		"label": "Restore Default Settings",
+		"tooltip": "Reset settings back to defaults.\r\nReload Scripts afterwards to see the changes in the user interface!",
+		"function": "SetDefaults",
+		"wsevent": "",
+		"group": ""
   }
 }

@@ -46,7 +46,7 @@ def SetDefaults():
                              , u"Reset settings file?", 4)
 
     if returnValue == MB_YES:
-        Settings().Save(settingsFile)
+        Settings(None, None).Save(settingsFile)
         MessageBox(0, u"Settings successfully restored to default values"
                    , u"Reset complete!", 0)
 
@@ -171,6 +171,8 @@ def Init():
     """data on Load, required function"""
     global MySet
     MySet = Settings(Parent, settingsFile)
+    global parent
+    parent = Parent
 
 def Execute(data):
     """Required Execute data function"""
