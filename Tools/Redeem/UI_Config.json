@@ -1,13 +1,13 @@
 ﻿{
    "output_file": "settings.json",
-    "OnlyLive": {
+    "onlylive": {
     "type": "checkbox",
     "value": false,
   	"label": "Only when live",
     "tooltip": "Command is only active when stream is live",
   	"group": "General"
   },
-    "Command": {
+    "command": {
     "type": "textbox",
     "value": "!redeem",
   	"label": "Command Name",
@@ -21,7 +21,7 @@
     "tooltip": "Skip over using the command above and instead use !rewardname as the command",
   	"group": "General"
   },
-    "Usage": {
+    "usage": {
     "type": "dropdown",
     "value": "Stream Chat",
     "items": ["Stream Chat","Stream Whisper","Stream Both","Discord Chat","Discord Whisper","Discord Both","Chat Both","Whisper Both","All"],
@@ -29,7 +29,7 @@
     "tooltip": "Usage for where the script can be used!",
     "group": "General"
   },
-    "Volume": {
+    "volume": {
     "type": "slider",
 	  "label": "Volume",
     "value": 50,
@@ -50,84 +50,84 @@
     "type": "textbox",
     "value": "{0} - {1} - {2} {3} - {4}",
   	"label": "Save to file format",
-    "tooltip": "Format of lines saved to the textfile upon successful redeem. \r\n{0} = User \r\n{1} = Reward\r\n{2} = Reward cost\r\n{3} = currencyname\r\n{4} = Date & Time\r\n{5} = 2nd word after command\r\n{6} = the entire message that triggered the reward",
+    "tooltip": "Format of lines saved to the textfile upon successful redeem. \r\n{0} = user \r\n{1} = Reward\r\n{2} = Reward cost\r\n{3} = currencyname\r\n{4} = Date & Time\r\n{5} = 2nd word after command\r\n{6} = the entire message that triggered the reward",
   	"group": "General"
   },
 
-   "NotEnough": {
+   "notenough": {
     "type": "textbox",
     "value": "{0} -> you don't have the {1} {2} required to redeem this reward.",
   	"label": "Not Enough Points Response",
-    "tooltip": "Response when user doesn't have enough currency. \r\n{0} = User \r\n{1} = redeem cost\r\n{2} = currencyname\r\n{3} = User points",
+    "tooltip": "Response when user doesn't have enough currency. \r\n{0} = user \r\n{1} = redeem cost\r\n{2} = currencyname\r\n{3} = user points",
   	"group": "Responses"
   },
-    "NotAvailable": {
+    "notavailable": {
     "type": "textbox",
     "value": "{0} -> {1} isn't an available reward",
   	"label": "Not Available Response",
-    "tooltip": "Response when user tries to redeem a reward that isn't available \r\n{0} = User \r\n{1} = reward user tried to redeem",
+    "tooltip": "Response when user tries to redeem a reward that isn't available \r\n{0} = user \r\n{1} = reward user tried to redeem",
   	"group": "Responses"
   },
-    "Info": {
+    "info": {
     "type": "textbox",
     "value": "{0} -> you have to define a reward to redeem!",
   	"label": "Info Response",
-    "tooltip": "Response when user doesn't specify what reward to redeem \r\n{0} = User ",
+    "tooltip": "Response when user doesn't specify what reward to redeem \r\n{0} = user ",
   	"group": "Responses"
   },
-  "ListBase": {
+  "listbase": {
     "type": "textbox",
     "value": "Right now you can redeem: ",
   	"label": "List message",
     "tooltip": "The message shown before listing the rewards when using !redeem list ",
   	"group": "Responses"
   },
-  "NotPerm": {
+  "notperm": {
     "type": "textbox",
-    "value": "{0} -> you don't have permission to redeem this reward. Permission is: [{1} / {2}]",
+    "value": "{0} -> you don't have permission to redeem this reward. permission is: [{1} / {2}]",
   	"label": "Not Permitted",
-    "tooltip": "Message to send when the user permission doesn't match reward permission \r\n{0} = User \r\n{1} = Permission\r\n{2} = Info",
+    "tooltip": "message to send when the user permission doesn't match reward permission \r\n{0} = user \r\n{1} = permission\r\n{2} = Info",
   	"group": "Responses"
   },
-  "ListCost": {
+  "listcost": {
     "type": "checkbox",
     "value": true,
   	"label": "Show prices in list",
     "tooltip": "Show prices for the rewards available to redeem when using !redeem list",
   	"group": "General"
   },
-    "UseCD": {
+    "usecd": {
     "type": "checkbox",
     "value": false,
-  	"label": "Use Cooldown Message",
-    "tooltip": "To display CoolDown Message?",
+  	"label": "Use cooldown message",
+    "tooltip": "To display cooldown message?",
   	"group": "General"
   },
-    "OnCooldown": {
+    "oncooldown": {
     "type": "textbox",
     "value": "{0} the command is still on cooldown for {1} seconds!",
-  	"label": "Cooldown Response",
+  	"label": "cooldown Response",
     "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
   	"group": "Responses"
   },
-    "OnUserCooldown": {
+    "onusercooldown": {
     "type": "textbox",
     "value": "{0} the command is still on user cooldown for {1} seconds!",
-  	"label": "User Cooldown Response",
+  	"label": "user cooldown Response",
     "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
   	"group": "Responses"
   },
-  "CasterCD": {
+  "castercd": {
     "type": "checkbox",
     "value": true,
   	"label": "Caster ignores cooldown",
     "tooltip": "If checked the broadcaster ignore cooldowns!",
   	"group": "General"
   },
-  "r1Enabled": {
+  "r1enabled": {
     "type": "checkbox",
     "value": true,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward1"
   },
@@ -138,105 +138,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward1"
   },
-    "r1Cost": {
+    "r1cost": {
     "type": "numberbox",
     "value": 100,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward1"
   },
-    "r1SM": {
+    "r1sm": {
     "type": "checkbox",
     "value": true,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward1"
   },
-    "r1Message": {
+    "r1message": {
     "type": "textbox",
     "value": "{0} spent {1} {2} to redeem a follow on Stream",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward1"
   },
-    "r1PS": {
+    "r1ps": {
     "type": "checkbox",
     "value": true,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward1"
   },
-    "r1Sound": {
+    "r1sound": {
     "type": "textbox",
     "value": "test.mp3",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward1"
   },
-    "r1BWS": {
+    "r1bws": {
     "type": "checkbox",
     "value": true,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward1"
   },
-    "r1GifLink": {
+    "r1giflink": {
     "type": "textbox",
     "value": "https://media3.giphy.com/avatars/100soft/WahNEDdlGjRZ.gif",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward1"
   },
-    "r1Duration": {
+    "r1duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward1"
   },
-  "r1Text": {
+  "r1text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward1"
   },
-    "r1Permission": {
+    "r1permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward1"
   },
-    "r1PermissionInfo": {
+    "r1permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward1"
   },
-    "r1Cooldown": {
+    "r1cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward1"
   },
-    "r1UserCooldown": {
+    "r1usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward1"
   },
-  "r2Enabled": {
+  "r2enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward2"
   },
@@ -247,105 +247,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward2"
   },
-    "r2Cost": {
+    "r2cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward2"
   },
-    "r2SM": {
+    "r2sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward2"
   },
-    "r2Message": {
+    "r2message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward2"
   },
-    "r2PS": {
+    "r2ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward2"
   },
-    "r2Sound": {
+    "r2sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward2"
   },
-    "r2BWS": {
+    "r2bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward2"
   },
-    "r2GifLink": {
+    "r2giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward2"
   },
-    "r2Duration": {
+    "r2duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward2"
   },
-  "r2Text": {
+  "r2text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward2"
   },
-    "r2Permission": {
+    "r2permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward2"
   },
-    "r2PermissionInfo": {
+    "r2permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward2"
   },
-    "r2Cooldown": {
+    "r2cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward2"
   },
-    "r2UserCooldown": {
+    "r2usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward2"
   },
-  "r3Enabled": {
+  "r3enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward3"
   },
@@ -356,105 +356,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward3"
   },
-    "r3Cost": {
+    "r3cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward3"
   },
-    "r3SM": {
+    "r3sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward3"
   },
-    "r3Message": {
+    "r3message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward3"
   },
-    "r3PS": {
+    "r3ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward3"
   },
-    "r3Sound": {
+    "r3sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward3"
   },
-    "r3BWS": {
+    "r3bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward3"
   },
-    "r3GifLink": {
+    "r3giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward3"
   },
-    "r3Duration": {
+    "r3duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward3"
   },
-  "r3Text": {
+  "r3text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward3"
   },
-    "r3Permission": {
+    "r3permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward3"
   },
-    "r3PermissionInfo": {
+    "r3permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward3"
   },
-    "r3Cooldown": {
+    "r3cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward3"
   },
-    "r3UserCooldown": {
+    "r3usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward3"
   },
-  "r4Enabled": {
+  "r4enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward4"
   },
@@ -465,105 +465,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward4"
   },
-    "r4Cost": {
+    "r4cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward4"
   },
-    "r4SM": {
+    "r4sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward4"
   },
-    "r4Message": {
+    "r4message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward4"
   },
-    "r4PS": {
+    "r4ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward4"
   },
-    "r4Sound": {
+    "r4sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward4"
   },
-    "r4BWS": {
+    "r4bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward4"
   },
-    "r4GifLink": {
+    "r4giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward4"
   },
-    "r4Duration": {
+    "r4duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward4"
   },
-  "r4Text": {
+  "r4text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward4"
   },
-    "r4Permission": {
+    "r4permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward4"
   },
-    "r4PermissionInfo": {
+    "r4permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward4"
   },
-    "r4Cooldown": {
+    "r4cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward4"
   },
-    "r4UserCooldown": {
+    "r4usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward4"
   },
-  "r5Enabled": {
+  "r5enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward5"
   },
@@ -574,105 +574,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward5"
   },
-    "r5Cost": {
+    "r5cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward5"
   },
-    "r5SM": {
+    "r5sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward5"
   },
-    "r5Message": {
+    "r5message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward5"
   },
-    "r5PS": {
+    "r5ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward5"
   },
-    "r5Sound": {
+    "r5sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward5"
   },
-    "r5BWS": {
+    "r5bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward5"
   },
-    "r5GifLink": {
+    "r5giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward5"
   },
-    "r5Duration": {
+    "r5duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward5"
   },
-  "r5Text": {
+  "r5text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward5"
   },
-    "r5Permission": {
+    "r5permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward5"
   },
-    "r5PermissionInfo": {
+    "r5permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward5"
   },
-    "r5Cooldown": {
+    "r5cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward5"
   },
-    "r5UserCooldown": {
+    "r5usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward5"
   },
-  "r6Enabled": {
+  "r6enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward6"
   },
@@ -683,105 +683,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward6"
   },
-    "r6Cost": {
+    "r6cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward6"
   },
-    "r6SM": {
+    "r6sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward6"
   },
-    "r6Message": {
+    "r6message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward6"
   },
-    "r6PS": {
+    "r6ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward6"
   },
-    "r6Sound": {
+    "r6sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward6"
   },
-    "r6BWS": {
+    "r6bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward6"
   },
-    "r6GifLink": {
+    "r6giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward6"
   },
-    "r6Duration": {
+    "r6duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward6"
   },
-  "r6Text": {
+  "r6text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward6"
   },
-    "r6Permission": {
+    "r6permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward6"
   },
-    "r6PermissionInfo": {
+    "r6permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward6"
   },
-    "r6Cooldown": {
+    "r6cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward6"
   },
-    "r6UserCooldown": {
+    "r6usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward6"
   },
-  "r7Enabled": {
+  "r7enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward7"
   },
@@ -792,105 +792,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward7"
   },
-    "r7Cost": {
+    "r7cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward7"
   },
-    "r7SM": {
+    "r7sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward7"
   },
-    "r7Message": {
+    "r7message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward7"
   },
-    "r7PS": {
+    "r7ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward7"
   },
-    "r7Sound": {
+    "r7sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward7"
   },
-    "r7BWS": {
+    "r7bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward7"
   },
-    "r7GifLink": {
+    "r7giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward7"
   },
-    "r7Duration": {
+    "r7duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward7"
   },
-  "r7Text": {
+  "r7text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward7"
   },
-    "r7Permission": {
+    "r7permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward7"
   },
-    "r7PermissionInfo": {
+    "r7permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward7"
   },
-    "r7Cooldown": {
+    "r7cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward7"
   },
-    "r7UserCooldown": {
+    "r7usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward7"
   },
-  "r8Enabled": {
+  "r8enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward8"
   },
@@ -901,105 +901,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward8"
   },
-    "r8Cost": {
+    "r8cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward8"
   },
-    "r8SM": {
+    "r8sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward8"
   },
-    "r8Message": {
+    "r8message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward8"
   },
-    "r8PS": {
+    "r8ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward8"
   },
-    "r8Sound": {
+    "r8sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward8"
   },
-    "r8BWS": {
+    "r8bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward8"
   },
-    "r8GifLink": {
+    "r8giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward8"
   },
-    "r8Duration": {
+    "r8duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward8"
   },
-  "r8Text": {
+  "r8text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward8"
   },
-    "r8Permission": {
+    "r8permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward8"
   },
-    "r8PermissionInfo": {
+    "r8permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward8"
   },
-    "r8Cooldown": {
+    "r8cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward8"
   },
-    "r8UserCooldown": {
+    "r8usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward8"
   },
-  "r9Enabled": {
+  "r9enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward9"
   },
@@ -1010,105 +1010,105 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward9"
   },
-    "r9Cost": {
+    "r9cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward9"
   },
-    "r9SM": {
+    "r9sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward9"
   },
-    "r9Message": {
+    "r9message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward9"
   },
-    "r9PS": {
+    "r9ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward9"
   },
-    "r9Sound": {
+    "r9sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward9"
   },
-    "r9BWS": {
+    "r9bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward9"
   },
-    "r9GifLink": {
+    "r9giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward9"
   },
-    "r9Duration": {
+    "r9duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward9"
   },
-  "r9Text": {
+  "r9text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward9"
   },
-    "r9Permission": {
+    "r9permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward9"
   },
-    "r9PermissionInfo": {
+    "r9permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward9"
   },
-    "r9Cooldown": {
+    "r9cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward9"
   },
-    "r9UserCooldown": {
+    "r9usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward9"
   },
-  "r10Enabled": {
+  "r10enabled": {
     "type": "checkbox",
     "value": false,
-  	"label": "Enabled",
+  	"label": "enabled",
     "tooltip": "Enable/Disable this reward",
   	"group": "Reward10"
   },
@@ -1119,99 +1119,99 @@
     "tooltip": "Name used to redeem this reward, one word only!",
     "group": "Reward10"
   },
-    "r10Cost": {
+    "r10cost": {
     "type": "numberbox",
     "value": 0,
-    "label": "Cost",
-    "tooltip": "Cost to redeem this reward",
+    "label": "cost",
+    "tooltip": "cost to redeem this reward",
     "group": "Reward10"
   },
-    "r10SM": {
+    "r10sm": {
     "type": "checkbox",
     "value": false,
   	"label": "Send Chat message",
     "tooltip": "Send chat message upon successful redeem.",
   	"group": "Reward10"
   },
-    "r10Message": {
+    "r10message": {
     "type": "textbox",
     "value": "",
     "label": "Chat response",
-    "tooltip": "Message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
+    "tooltip": "message sent upon successfully redeeming a reward \r\n{0} = user \r\n{1} = cost\r\n{2} = currencyname\r\n{3} = Parameter2 (first one after reward name)",
     "group": "Reward10"
   },
-    "r10PS": {
+    "r10ps": {
     "type": "checkbox",
     "value": false,
-  	"label": "Play Sound",
+  	"label": "Play sound",
     "tooltip": "Play sound upon successful redeem.",
   	"group": "Reward10"
   },
-    "r10Sound": {
+    "r10sound": {
     "type": "textbox",
     "value": "insert sound file",
-    "label": "Soundfile",
-    "tooltip": "Soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
+    "label": "soundfile",
+    "tooltip": "soundfile including fileformat. \r\nExample: test.mp3 \r\nThe soundfile must be in the sounds folder!",
     "group": "Reward10"
   },
-    "r10BWS": {
+    "r10bws": {
     "type": "checkbox",
     "value": false,
   	"label": "Play GIF",
     "tooltip": "Play GIF upon successful redeem.",
   	"group": "Reward10"
   },
-    "r10GifLink": {
+    "r10giflink": {
     "type": "textbox",
     "value": "insert gif link",
     "label": "Gif Link",
     "tooltip": "Link to the gif to show in the index.html",
     "group": "Reward10"
   },
-    "r10Duration": {
+    "r10duration": {
     "type": "slider",
-	  "label": "GIF Duration",
+	  "label": "GIF duration",
     "value": 5,
 	  "min": 1,
 	  "max": 60,
 	  "ticks": 1,
-    "tooltip": "Duration of GIF showed on screen",
+    "tooltip": "duration of GIF showed on screen",
 	  "group": "Reward10"
   },
-  "r10Text": {
+  "r10text": {
     "type": "textbox",
     "value": "",
     "label": "Alert text",
-    "tooltip":  "Text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
+    "tooltip":  "text shown below the gif on the alert! Leave empty to disable text \r\n{0} = username \r\n{1} = redeem cost \r\n{2} = redeem name",
     "group": "Reward10"
   },
-    "r10Permission": {
+    "r10permission": {
     "type": "dropdown",
     "value": "Everyone",
-    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","User_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
-    "label": "Permission level",
+    "items": ["Everyone","Regular","Subscriber","GameWisp Subscriber","user_Specific","Min_Rank","Min_Points","Min_Hours","Moderator","Editor","Caster"],
+    "label": "permission level",
     "tooltip": "Set the permission level for the command",
     "group": "Reward10"
   },
-    "r10PermissionInfo": {
+    "r10permissioninfo": {
     "type": "textbox",
     "value": "",
-    "label": "Permission level info",
+    "label": "permission level info",
     "tooltip": "Set the user, rank or tier for permission",
     "group": "Reward10"
   },
-    "r10Cooldown": {
+    "r10cooldown": {
     "type": "numberbox",
-  	"label": "Cooldown (seconds)",
+  	"label": "cooldown (seconds)",
     "value": 0,
-    "tooltip": "Cooldown in seconds.",
+    "tooltip": "cooldown in seconds.",
   	"group": "Reward10"
   },
-    "r10UserCooldown": {
+    "r10usercooldown": {
     "type": "numberbox",
-  	"label": "User Cooldown (seconds)",
+  	"label": "user cooldown (seconds)",
     "value": 10,
-    "tooltip": "User cooldown in seconds.",
+    "tooltip": "user cooldown in seconds.",
   	"group": "Reward10"
   },
   "openFolder": {
@@ -1222,11 +1222,11 @@
     "wsevent": "",
     "group": ""
   },
-  "openSoundFolder": {
+  "opensoundFolder": {
     "type": "button",
-    "label": "Open Sounds Folder",
+    "label": "Open sounds Folder",
     "tooltip": "Opens the sounds folder",
-    "function": "OpenSoundFolder",
+    "function": "OpensoundFolder",
     "wsevent": "",
     "group": ""
   },

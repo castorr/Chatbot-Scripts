@@ -19,10 +19,10 @@ from settingsmodule import Settings
 #---------------------------------------
 # [Required] Script information
 #---------------------------------------
-ScriptName = "Redeem"
+ScriptName = "Redeem V2"
 Website = "https://www.twitch.tv/castorr91"
 Creator = "Castorr91"
-Version = "1.2.0"
+Version = "2.0.0"
 Description = "Right Click -> Insert API Key"
 
 #---------------------------------------
@@ -102,19 +102,19 @@ def IsOnCooldown(data, command):
     """Handle cooldowns"""
     cooldown = Parent.IsOnCooldown(ScriptName, command)
     usercooldown = Parent.IsOnUserCooldown(ScriptName, command, data.User)
-    caster = (Parent.HasPermission(data.User, "Caster", "") and MySet.CasterCD)
+    caster = (Parent.HasPermission(data.User, "Caster", "") and MySet.castercd)
 
     if (cooldown or usercooldown) and caster is False:
 
-        if MySet.UseCD:
+        if MySet.usecd:
             cooldownDuration = Parent.GetCooldownDuration(ScriptName, command)
             userCDD = Parent.GetUserCooldownDuration(ScriptName, command, data.User)
 
             if cooldownDuration > userCDD:
-                SendResp(data, MySet.OnCooldown.format(data.UserName, cooldownDuration))
+                SendResp(data, MySet.oncooldown.format(data.UserName, cooldownDuration))
 
             else:
-                SendResp(data, MySet.OnUserCooldown.format(data.UserName, userCDD))
+                SendResp(data, MySet.onusercooldown.format(data.UserName, userCDD))
         return False
     return True
 
@@ -122,7 +122,7 @@ def GetCommand(reward):
     """Get full command name for cooldown handling"""
     if MySet.ignoreredeem:
         return "!" + reward
-    return MySet.Command + " " + reward
+    return MySet.command + " " + reward
 
 def SendResp(data, message):
     """Sends message to Stream or discord chat depending on settings"""
@@ -174,27 +174,24 @@ def Init():
 
 def Execute(data):
     """Required Execute data function"""
-    if data.IsChatMessage() and data.GetParam(0).lower() == MySet.Command.lower() or MySet.ignoreredeem:
+    if (data.IsChatMessage() and data.GetParam(0).lower() == MySet.command.lower()) or MySet.ignoreredeem:
 
-        if not IsFromValidSource(data, MySet.Usage) or (MySet.OnlyLive and not data.IsLive()):
+        if not IsFromValidSource(data, MySet.usage) or (MySet.onlylive and not data.IsLive()):
             return
 
+        Parent.Log(ScriptName, str(MySet.ignoreredeem))
         if data.GetParamCount() < 2 and not MySet.ignoreredeem:
-            SendResp(data, MySet.Info.format(data.UserName))
+            SendResp(data, MySet.info.format(data.UserName))
             return
 
         if MySet.ignoreredeem:
 
             for x in range(1, 11):
-                command = "!" + str(getattr(MySet, "r{0}".format(x)).lower())
-                Parent.Log(ScriptName, command)
-                Parent.Log(ScriptName, data.GetParam(0).lower())
                 if data.GetParam(0).lower() == "!" + getattr(MySet, "r{0}".format(x)).lower():
                     Reward(data, x)
                     return
 
         if not MySet.ignoreredeem:
-            Parent.Log(ScriptName, "5")
             for x in range(1, 11):
                 if data.GetParam(1).lower() == getattr(MySet, "r{0}".format(x)).lower():
                     Reward(data, x)
@@ -205,13 +202,13 @@ def Execute(data):
 
         else:
             if not MySet.ignoreredeem:
-                message = MySet.NotAvailable.format(data.UserName, data.GetParam(1))
+                message = MySet.notavailable.format(data.UserName, data.GetParam(1))
                 SendResp(data, message)
 
 def Tick():
     """Required tick function"""
     if AudioPlaybackQueue:
-        if Parent.PlaySound(AudioPlaybackQueue[0], MySet.Volume*0.01):
+        if Parent.PlaySound(AudioPlaybackQueue[0], MySet.volume*0.01):
             AudioPlaybackQueue.popleft()
 
 #---------------------------------------
@@ -220,7 +217,7 @@ def Tick():
 def redeem(data, sm, ps, bws, message, dump, SF, cost):
     """First redeem reward function"""
     if Parent.GetPoints(data.User) >= cost:
-        if not MySet.OnlyLive or Parent.IsLive():
+        if not MySet.onlylive or Parent.IsLive():
             if sm:
                 message = message.format(data.UserName, cost, Parent.GetCurrencyName(), data.GetParam(2))
                 SendResp(data, message)
@@ -246,48 +243,48 @@ def redeem(data, sm, ps, bws, message, dump, SF, cost):
     else:
         currency = Parent.GetCurrencyName()
         points = Parent.GetPoints(data.User)
-        message = MySet.NotEnough.format(data.UserName, cost, currency, points)
+        message = MySet.notenough.format(data.UserName, cost, currency, points)
         SendResp(data, message)
         return False
     return True
 
 def GetList(data):
     """Get list of all enabled rewards"""
-    RewardList = getattr(MySet, "ListBase")
+    RewardList = getattr(MySet, "listbase")
     for x in range(1, 11):
-        if getattr(MySet, "r{0}Enabled".format(x)) and Parent.HasPermission(data.User, getattr(MySet, "r{0}Permission".format(x)), getattr(MySet, "r{0}PermissionInfo".format(x))):
+        if getattr(MySet, "r{0}enabled".format(x)) and Parent.HasPermission(data.User, getattr(MySet, "r{0}permission".format(x)), getattr(MySet, "r{0}permissioninfo".format(x))):
             RewardList += (getattr(MySet, "r{0}".format(x)))
-            if getattr(MySet, "ListCost"):
-                RewardList += ("(" + str(getattr(MySet, "r{0}Cost".format(x))) + ")" + " - ")
+            if getattr(MySet, "listcost"):
+                RewardList += ("(" + str(getattr(MySet, "r{0}cost".format(x))) + ")" + " - ")
     return RewardList
 
 def HasPermission(data, permission, permissioninfo):
     """Return true or false dending on if the user has permission.
     Also sends permission response if user doesn't"""
     if not Parent.HasPermission(data.User, permission, permissioninfo):
-        message = MySet.NotPerm.format(data.UserName, permission, permissionfnfo)
+        message = MySet.notperm.format(data.UserName, permission, permissionfnfo)
         SendResp(data, message)
         return False
     return True
 
 def Reward(data, x):
     """Reward 1 setup function"""
-    if not HasPermission(data, getattr(MySet, "r{0}Permission".format(x)), getattr(MySet, "r{0}PermissionInfo".format(x))):
+    if not HasPermission(data, getattr(MySet, "r{0}permission".format(x)), getattr(MySet, "r{0}permissioninfo".format(x))):
         return
 
     command = GetCommand(getattr(MySet, "r{0}".format(x)))
-    if getattr(MySet, "r{0}Enabled".format(x)) and IsOnCooldown(data, command):
-        a = getattr(MySet, "r{0}SM".format(x))
-        b = getattr(MySet, "r{0}PS".format(x))
-        c = getattr(MySet, "r{0}BWS".format(x))
-        e = getattr(MySet, "r{0}Message".format(x))
-        textalert = getattr(MySet, "r{0}Text".format(x)).format(data.UserName, getattr(MySet, "r{0}Cost".format(x)), getattr(MySet, "r{0}".format(x)))
-        f = {"duration": getattr(MySet, "r{0}Duration".format(x))*1000, "link": getattr(MySet, "r{0}GifLink".format(x)), "text": textalert}
-        g = getattr(MySet, "r{0}Sound".format(x))
-        h = getattr(MySet, "r{0}Cost".format(x))
+    if getattr(MySet, "r{0}enabled".format(x)) and IsOnCooldown(data, command):
+        a = getattr(MySet, "r{0}sm".format(x))
+        b = getattr(MySet, "r{0}ps".format(x))
+        c = getattr(MySet, "r{0}bws".format(x))
+        e = getattr(MySet, "r{0}message".format(x))
+        textalert = getattr(MySet, "r{0}text".format(x)).format(data.UserName, getattr(MySet, "r{0}cost".format(x)), getattr(MySet, "r{0}".format(x)))
+        f = {"duration": getattr(MySet, "r{0}duration".format(x))*1000, "link": getattr(MySet, "r{0}giflink".format(x)), "text": textalert}
+        g = getattr(MySet, "r{0}sound".format(x))
+        h = getattr(MySet, "r{0}cost".format(x))
 
         if redeem(data, a, b, c, e, f, g, h):
             Parent.RemovePoints(data.User, data.UserName, h)
 
-            Parent.AddUserCooldown(ScriptName, command, data.User, getattr(MySet, "r{0}UserCooldown".format(x)))
-            Parent.AddCooldown(ScriptName, command, getattr(MySet, "r{0}Cooldown".format(x)))
+            Parent.AddUserCooldown(ScriptName, command, data.User, getattr(MySet, "r{0}usercooldown".format(x)))
+            Parent.AddCooldown(ScriptName, command, getattr(MySet, "r{0}cooldown".format(x)))
