@@ -1,6 +1,6 @@
-#############################
-#    Castorr's Lazy Pack    #
-#############################
+###########################
+#  Castorr's Lazy Pack    #
+###########################
 
 Description: Extra $parameters and !sr info when missing id/url
 Made By: Castorr91
@@ -9,6 +9,12 @@ Website: https://www.twitch.tv/castorr91
 #############################
 #         Versions          #
 #############################
+    1.3
+    	- Updated due to v2 having compatibility issues for some users
+    	- Added $label(textfile)
+    	- Removed $sessionfollows
+    	- Removed $lastfollow
+
     1.1.2
 	- Added option to select service in settings
 	- Fixed copy paste error in UI_Config

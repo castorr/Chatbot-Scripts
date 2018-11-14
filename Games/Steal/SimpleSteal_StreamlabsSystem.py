@@ -2,37 +2,40 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=invalid-name
 """Simple Steal command, replica of the textbased version."""
-#---------------------------------------
+# ---------------------------------------
 # Libraries and references
-#---------------------------------------
+# ---------------------------------------
 import codecs
 import json
 import os
 import winsound
 import ctypes
-#---------------------------------------
+import random
+
+# ---------------------------------------
 # [Required] Script information
-#---------------------------------------
+# ---------------------------------------
 ScriptName = "Steal"
 Website = "https://www.twitch.tv/castorr91"
 Creator = "Castorr91"
 Version = "1.1"
 Description = "Simple steal command"
-#---------------------------------------
+# ---------------------------------------
 # Versions
-#---------------------------------------
+# ---------------------------------------
 """ Releases (open README.txt for full release notes)
 1.1 - Fixed cooldowns, added mixer & youtube support
 1.0 - Initial Release
 """
-#---------------------------------------
+# ---------------------------------------
 # Variables
-#---------------------------------------
+# ---------------------------------------
 settingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
 
-#---------------------------------------
+
+# ---------------------------------------
 # Classes
-#---------------------------------------
+# ---------------------------------------
 class Settings:
     """" Loads settings from file if file is found if not uses default values"""
 
@@ -42,7 +45,7 @@ class Settings:
             with codecs.open(settingsFile, encoding='utf-8-sig', mode='r') as f:
                 self.__dict__ = json.load(f, encoding='utf-8-sig')
 
-        else: #set variables if no custom settings file is found
+        else:  # set variables if no custom settings file is found
             self.OnlyLive = False
             self.Command = "!steal"
             self.Cost = 10
@@ -81,39 +84,42 @@ class Settings:
         with codecs.open(settingsFile.replace("json", "js"), encoding='utf-8-sig', mode='w+') as f:
             f.write("var settings = {0};".format(json.dumps(self.__dict__, encoding='utf-8-sig', ensure_ascii=False)))
         return
-#---------------------------------------
+
+
+# ---------------------------------------
 # [OPTIONAL] Settings functions
-#---------------------------------------
+# ---------------------------------------
 def SetDefaults():
     """Set default settings function"""
 
-    #play windows sound
+    # play windows sound
     winsound.MessageBeep()
 
-    #open messagebox with a security check
+    # open messagebox with a security check
     MessageBox = ctypes.windll.user32.MessageBoxW
     returnValue = MessageBox(0, u"You are about to reset the settings, "
                                 "are you sure you want to contine?"
                              , u"Reset settings file?", 4)
 
-    #if user press "yes"
+    # if user press "yes"
     if returnValue == 6:
-
         # Save defaults back to file
         Settings.SaveSettings(MySet, settingsFile)
 
-        #show messagebox that it was complete
+        # show messagebox that it was complete
         MessageBox = ctypes.windll.user32.MessageBoxW
         returnValue = MessageBox(0, u"Settings successfully restored to default values"
                                  , u"Reset complete!", 0)
 
-#---------------------------------------
+
+# ---------------------------------------
 # [Required] functions
-#---------------------------------------
+# ---------------------------------------
 def Init():
     """data on Load, required function"""
     global MySet
     MySet = Settings(settingsFile)
+
 
 def Execute(data):
     """Required Execute data function"""
@@ -121,10 +127,6 @@ def Execute(data):
 
         if not IsFromValidSource(data, MySet.Usage):
             return
-
-        if not Parent.HasPermission(data.User, MySet.Permission, MySet.PermissionInfo):
-            message = MySet.PermissionResp.format(data.User, MySet.Permission, MySet.PermissionInfo)
-            SendResp(data, message)
 
         if not HasPermission(data):
             return
@@ -134,53 +136,62 @@ def Execute(data):
             if IsOnCooldown(data):
                 return
 
-            Parent.RemovePoints(data.User, data.UserName, MySet.Cost)
-            if data.GetParam(1).lower == Parent.GetChannelName().lower and Myset.Protected:
-                value = Parent.GetRandom(MySet.Min, MySet.Max)
-                Parent.RemovePoints(data.User, data.UserName, value)
-                message = MySet.LoseResponse.format(data.UserName, Parent.GetCurrencyName(), value, data.GetParam(1))
-                AddCooldown(data)
-                return
-
             if data.GetParamCount() < 2:
                 message = MySet.InfoResponse.format(data.UserName)
                 return
 
-            outcome = Parent.GetRandom(1, 3)
-            if outcome == 1:
-                value = Parent.GetRandom(MySet.Min,MySet.Max)
-                Parent.RemovePoints(data.User, data.UserName, value)
-                Parent.AddPoints(data.GetParam(1).lower(), data.GetParam(1).lower(), value)
-                message = MySet.LoseResponse.format(data.UserName, Parent.GetCurrencyName(), data.GetParam(1), value)
-                SendResp(data, message)
-                AddCooldown(data)
-                if MySet.Timeout:
-                    Parent.SendStreamMessage("/timeout {0} {1}".format(data.User, MySet.TL))
-                return
+            if Parent.RemovePoints(data.User, data.UserName, MySet.Cost):
+                if data.GetParam(1).lower == Parent.GetChannelName().lower and Myset.Protected:
+                    value = Parent.GetRandom(MySet.Min, MySet.Max)
+                    Parent.RemovePoints(data.User, data.UserName, value)
+                    message = MySet.LoseResponse.format(data.UserName, Parent.GetCurrencyName(), value, data.GetParam(1))
+                    AddCooldown(data)
+                    return
 
-            elif outcome == 2:
-                value = Parent.GetRandom(MySet.Min,MySet.Max)
-                if not Parent.RemovePoints(data.GetParam(1).lower(), data.GetParam(1).lower(), value):
-                    message = MySet.NotHere.format(data.UserName, MySet.Min, Parent.GetCurrencyName())
+                outcome = Parent.GetRandom(1, 3)
+                viewer_dict = Parent.GetDisplayNames(Parent.GetViewerList())
+                user_name = data.GetParam(1)
+                user_id = [key for key, value in viewer_dict.iteritems() if value == user_name][0]
+
+                if outcome == 1:
+                    value = Parent.GetRandom(MySet.Min, MySet.Max)
+                    Parent.RemovePoints(data.User, data.UserName, value)
+                    Parent.AddPoints(user_id, user_name, value)
+                    message = MySet.LoseResponse.format(data.UserName, Parent.GetCurrencyName(), user_name, value)
+                    SendResp(data, message)
+                    AddCooldown(data)
+                    if MySet.Timeout:
+                        Parent.SendStreamMessage("/timeout {0} {1}".format(data.User, MySet.TL))
+                    return
+
+                elif outcome == 2:
+                    value = Parent.GetRandom(MySet.Min, MySet.Max)
+                    if not Parent.RemovePoints(user_id, user_name, value):
+                        message = MySet.NotHere.format(data.UserName, MySet.Min, Parent.GetCurrencyName())
+                        SendResp(data, message)
+                        return
+                    Parent.AddPoints(data.User, data.UserName, value)
+                    message = MySet.WinResponse.format(data.UserName, value, Parent.GetCurrencyName(), user_name)
                     SendResp(data, message)
                     AddCooldown(data)
                     return
-                Parent.AddPoints(data.User, data.UserName, value)
-                message = MySet.WinResponse.format(data.UserName, value, Parent.GetCurrencyName(), data.GetParam(1))
-                SendResp(data, message)
-                AddCooldown(data)
-                return
 
+                else:
+                    message = "Shit went wrong #blameCastorr #blamePowerclan"
+                    SendResp(data, message)
             else:
-                message = "Shit went wrong #blameCastorr"
+                message = MySet.NotEnoughResponse.format(data.UserName, Parent.GetCurrencyName())
                 SendResp(data, message)
+
 
 def Tick():
     """Required tick function"""
+    pass
 
-#---------------------------------------
+
+# ---------------------------------------
 # [Optional] Functions for usage handling
-#---------------------------------------
+# ---------------------------------------
 def SendResp(data, sendMessage):
     """Sends message to Stream or discord chat depending on settings"""
 
@@ -195,6 +206,7 @@ def SendResp(data, sendMessage):
 
     if data.IsFromDiscord() and data.IsWhisper():
         Parent.SendDiscordDM(data.User, sendMessage)
+
 
 def CheckUsage(data, rUsage):
     """Return true or false depending on the message is sent from
@@ -219,6 +231,7 @@ def CheckUsage(data, rUsage):
             return True
 
     return False
+
 
 def IsOnCooldown(data):
     """Return true if command is on cooldown and send cooldown message if enabled"""
@@ -246,6 +259,7 @@ def IsOnCooldown(data):
         return True
     return False
 
+
 def HasPermission(data):
     """Returns true if user has permission and false if user doesn't"""
     if not Parent.HasPermission(data.User, MySet.Permission, MySet.PermissionInfo):
@@ -253,6 +267,7 @@ def HasPermission(data):
         SendResp(data, message)
         return False
     return True
+
 
 def IsFromValidSource(data, Usage):
     """Return true or false depending on the message is sent from
@@ -275,6 +290,7 @@ def IsFromValidSource(data, Usage):
         if data.IsWhisper() and (Usage in l):
             return True
     return False
+
 
 def AddCooldown(data):
     """add cooldowns"""
